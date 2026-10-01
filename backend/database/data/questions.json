@@ -1,0 +1,1402 @@
+[
+  {
+    "theme_id": 1,
+    "intitule": "Comment appelle-t-on la mesure de la rapidite d un algorithme selon la taille des donnees ?",
+    "type_question": "QCM",
+    "reponse_correcte": "Complexite",
+    "reponse_fausse_1": "Rapidite",
+    "reponse_fausse_2": "Volume",
+    "reponse_fausse_3": "Frequence",
+    "difficulte": "Difficile"
+  },
+  {
+    "theme_id": 1,
+    "intitule": "La recherche dichotomique divise l espace de recherche en deux a chaque etape.",
+    "type_question": "VF",
+    "reponse_correcte": "Vrai",
+    "reponse_fausse_1": "Faux",
+    "reponse_fausse_2": null,
+    "reponse_fausse_3": null,
+    "difficulte": "Difficile"
+  },
+  {
+    "theme_id": 1,
+    "intitule": "Le pseudo-code est un langage de programmation specifique.",
+    "type_question": "VF",
+    "reponse_correcte": "Faux",
+    "reponse_fausse_1": "Vrai",
+    "reponse_fausse_2": null,
+    "reponse_fausse_3": null,
+    "difficulte": "Difficile"
+  },
+  {
+    "theme_id": 1,
+    "intitule": "Quelle notation decrit le pire cas d un algorithme ?",
+    "type_question": "QCM",
+    "reponse_correcte": "Big O",
+    "reponse_fausse_1": "Big Omega",
+    "reponse_fausse_2": "Big Pi",
+    "reponse_fausse_3": "Big Theta",
+    "difficulte": "Difficile"
+  },
+  {
+    "theme_id": 1,
+    "intitule": "Un algorithme recursif s appelle lui-meme pour resoudre un probleme.",
+    "type_question": "VF",
+    "reponse_correcte": "Vrai",
+    "reponse_fausse_1": "Faux",
+    "reponse_fausse_2": null,
+    "reponse_fausse_3": null,
+    "difficulte": "Difficile"
+  },
+  {
+    "theme_id": 1,
+    "intitule": "L algorithme de tri rapide (QuickSort) a une complexite moyenne de O(n log n).",
+    "type_question": "VF",
+    "reponse_correcte": "Vrai",
+    "reponse_fausse_1": "Faux",
+    "reponse_fausse_2": null,
+    "reponse_fausse_3": null,
+    "difficulte": "Extreme"
+  },
+  {
+    "theme_id": 1,
+    "intitule": "La programmation dynamique stocke les resultats des sous-problemes pour eviter les calculs repetes.",
+    "type_question": "VF",
+    "reponse_correcte": "Vrai",
+    "reponse_fausse_1": "Faux",
+    "reponse_fausse_2": null,
+    "reponse_fausse_3": null,
+    "difficulte": "Extreme"
+  },
+  {
+    "theme_id": 1,
+    "intitule": "Que calcule l algorithme de Dijkstra ?",
+    "type_question": "QCM",
+    "reponse_correcte": "Le chemin le plus court dans un graphe",
+    "reponse_fausse_1": "La factorielle d un nombre",
+    "reponse_fausse_2": "La recherche binaire",
+    "reponse_fausse_3": "Le tri d un tableau",
+    "difficulte": "Extreme"
+  },
+  {
+    "theme_id": 1,
+    "intitule": "Quel algorithme utilise la technique diviser pour regner ?",
+    "type_question": "QCM",
+    "reponse_correcte": "Tri fusion",
+    "reponse_fausse_1": "Tri par insertion",
+    "reponse_fausse_2": "Tri a bulles",
+    "reponse_fausse_3": "Tri par selection",
+    "difficulte": "Extreme"
+  },
+  {
+    "theme_id": 1,
+    "intitule": "Quelle structure de donnees utilise le principe FIFO (First In First Out) ?",
+    "type_question": "QCM",
+    "reponse_correcte": "File",
+    "reponse_fausse_1": "Pile",
+    "reponse_fausse_2": "Arbre",
+    "reponse_fausse_3": "Graphe",
+    "difficulte": "Extreme"
+  },
+  {
+    "theme_id": 1,
+    "intitule": "Comment appelle-t-on une suite d instructions qui se repete plusieurs fois ?",
+    "type_question": "QCM",
+    "reponse_correcte": "Boucle",
+    "reponse_fausse_1": "Condition",
+    "reponse_fausse_2": "Variable",
+    "reponse_fausse_3": "Tableau",
+    "difficulte": "Facile"
+  },
+  {
+    "theme_id": 1,
+    "intitule": "Comment s appelle le schema qui represente un algorithme avec des symboles et des fleches ?",
+    "type_question": "QCM",
+    "reponse_correcte": "Logigramme",
+    "reponse_fausse_1": "Graphe",
+    "reponse_fausse_2": "Organigramme",
+    "reponse_fausse_3": "Programme",
+    "difficulte": "Facile"
+  },
+  {
+    "theme_id": 1,
+    "intitule": "Dans un algorithme, une variable permet de stocker une valeur.",
+    "type_question": "VF",
+    "reponse_correcte": "Vrai",
+    "reponse_fausse_1": "Faux",
+    "reponse_fausse_2": null,
+    "reponse_fausse_3": null,
+    "difficulte": "Facile"
+  },
+  {
+    "theme_id": 1,
+    "intitule": "Un algorithme est une suite d etapes logiques pour resoudre un probleme.",
+    "type_question": "VF",
+    "reponse_correcte": "Vrai",
+    "reponse_fausse_1": "Faux",
+    "reponse_fausse_2": null,
+    "reponse_fausse_3": null,
+    "difficulte": "Facile"
+  },
+  {
+    "theme_id": 1,
+    "intitule": "Une recette de cuisine est un exemple d algorithme.",
+    "type_question": "VF",
+    "reponse_correcte": "Vrai",
+    "reponse_fausse_1": "Faux",
+    "reponse_fausse_2": null,
+    "reponse_fausse_3": null,
+    "difficulte": "Facile"
+  },
+  {
+    "theme_id": 1,
+    "intitule": "La boucle Pour est pratique quand on sait combien de fois repeter une action.",
+    "type_question": "VF",
+    "reponse_correcte": "Vrai",
+    "reponse_fausse_1": "Faux",
+    "reponse_fausse_2": null,
+    "reponse_fausse_3": null,
+    "difficulte": "Moyenne"
+  },
+  {
+    "theme_id": 1,
+    "intitule": "Le tri a bulles compare les elements adjacents et les echange si necessaire.",
+    "type_question": "VF",
+    "reponse_correcte": "Vrai",
+    "reponse_fausse_1": "Faux",
+    "reponse_fausse_2": null,
+    "reponse_fausse_3": null,
+    "difficulte": "Moyenne"
+  },
+  {
+    "theme_id": 1,
+    "intitule": "Quel type de boucle verifie la condition AVANT d executer le code ?",
+    "type_question": "QCM",
+    "reponse_correcte": "Boucle Tant que",
+    "reponse_fausse_1": "Boucle Faire...Tant que",
+    "reponse_fausse_2": "Boucle Jamais",
+    "reponse_fausse_3": "Boucle Infinie",
+    "difficulte": "Moyenne"
+  },
+  {
+    "theme_id": 1,
+    "intitule": "Quelle methode est plus rapide que la recherche simple dans une liste triee ?",
+    "type_question": "QCM",
+    "reponse_correcte": "Recherche dichotomique",
+    "reponse_fausse_1": "Recherche sequentielle",
+    "reponse_fausse_2": "Recherche par bulle",
+    "reponse_fausse_3": "Recherche aleatoire",
+    "difficulte": "Moyenne"
+  },
+  {
+    "theme_id": 1,
+    "intitule": "Un organigramme utilise des formes geometriques pour representer les etapes d un processus.",
+    "type_question": "VF",
+    "reponse_correcte": "Vrai",
+    "reponse_fausse_1": "Faux",
+    "reponse_fausse_2": null,
+    "reponse_fausse_3": null,
+    "difficulte": "Moyenne"
+  },
+  {
+    "theme_id": 2,
+    "intitule": "Le DevOps relie developpement et exploitation.",
+    "type_question": "VF",
+    "reponse_correcte": "Vrai",
+    "reponse_fausse_1": "Faux",
+    "reponse_fausse_2": null,
+    "reponse_fausse_3": null,
+    "difficulte": "Difficile"
+  },
+  {
+    "theme_id": 2,
+    "intitule": "Le Site Reliability Engineer (SRE) garantit la disponibilite et la performance des services en production.",
+    "type_question": "VF",
+    "reponse_correcte": "Vrai",
+    "reponse_fausse_1": "Faux",
+    "reponse_fausse_2": null,
+    "reponse_fausse_3": null,
+    "difficulte": "Difficile"
+  },
+  {
+    "theme_id": 2,
+    "intitule": "Quel metier consiste a automatiser les processus de deploiement et d infrastructure ?",
+    "type_question": "QCM",
+    "reponse_correcte": "Ingenieur DevOps",
+    "reponse_fausse_1": "Developpeur iOS",
+    "reponse_fausse_2": "Redacteur technique",
+    "reponse_fausse_3": "Product Owner",
+    "difficulte": "Difficile"
+  },
+  {
+    "theme_id": 2,
+    "intitule": "Quel professionnel est specialise dans l optimisation des bases de donnees ?",
+    "type_question": "QCM",
+    "reponse_correcte": "Administrateur de bases de donnees (DBA)",
+    "reponse_fausse_1": "Analyste metier",
+    "reponse_fausse_2": "Designer graphique",
+    "reponse_fausse_3": "Developpeur front-end",
+    "difficulte": "Difficile"
+  },
+  {
+    "theme_id": 2,
+    "intitule": "Un architecte logiciel conçoit la structure globale d une application complexe.",
+    "type_question": "VF",
+    "reponse_correcte": "Vrai",
+    "reponse_fausse_1": "Faux",
+    "reponse_fausse_2": null,
+    "reponse_fausse_3": null,
+    "difficulte": "Difficile"
+  },
+  {
+    "theme_id": 2,
+    "intitule": "Le metier de Reverse Engineer consiste a analyser du code compile pour comprendre son fonctionnement.",
+    "type_question": "VF",
+    "reponse_correcte": "Vrai",
+    "reponse_fausse_1": "Faux",
+    "reponse_fausse_2": null,
+    "reponse_fausse_3": null,
+    "difficulte": "Extreme"
+  },
+  {
+    "theme_id": 2,
+    "intitule": "Parmi ces metiers, lequel est le plus oriente securite offensive ?",
+    "type_question": "QCM",
+    "reponse_correcte": "Pentester",
+    "reponse_fausse_1": "Analyste SOC",
+    "reponse_fausse_2": "Architecte Cloud",
+    "reponse_fausse_3": "Administrateur reseau",
+    "difficulte": "Extreme"
+  },
+  {
+    "theme_id": 2,
+    "intitule": "Quel professionnel est responsable de la strategie et de la vision produit ?",
+    "type_question": "QCM",
+    "reponse_correcte": "Product Manager",
+    "reponse_fausse_1": "Tech Lead",
+    "reponse_fausse_2": "Ingenieur QA",
+    "reponse_fausse_3": "Business Analyst",
+    "difficulte": "Extreme"
+  },
+  {
+    "theme_id": 2,
+    "intitule": "Quel role consiste a detecter et repondre aux incidents de securite en temps reel ?",
+    "type_question": "QCM",
+    "reponse_correcte": "Analyste SOC",
+    "reponse_fausse_1": "Developpeur blockchain",
+    "reponse_fausse_2": "Architecte solution",
+    "reponse_fausse_3": "Data Engineer",
+    "difficulte": "Extreme"
+  },
+  {
+    "theme_id": 2,
+    "intitule": "Un ingenieur en machine learning cree des modeles qui apprennent a partir de donnees.",
+    "type_question": "VF",
+    "reponse_correcte": "Vrai",
+    "reponse_fausse_1": "Faux",
+    "reponse_fausse_2": null,
+    "reponse_fausse_3": null,
+    "difficulte": "Extreme"
+  },
+  {
+    "theme_id": 2,
+    "intitule": "Le metier de testeur QA consiste a verifier que le logiciel fonctionne correctement.",
+    "type_question": "VF",
+    "reponse_correcte": "Vrai",
+    "reponse_fausse_1": "Faux",
+    "reponse_fausse_2": null,
+    "reponse_fausse_3": null,
+    "difficulte": "Facile"
+  },
+  {
+    "theme_id": 2,
+    "intitule": "Le role d un technicien informatique est surtout de :",
+    "type_question": "QCM",
+    "reponse_correcte": "Gerer le materiel et l assistance technique",
+    "reponse_fausse_1": "Concevoir des algorithmes complexes",
+    "reponse_fausse_2": "Corriger les bugs logiciels",
+    "reponse_fausse_3": "Developper des sites web",
+    "difficulte": "Facile"
+  },
+  {
+    "theme_id": 2,
+    "intitule": "Quel metier consiste a assurer la securite des systemes informatiques ?",
+    "type_question": "QCM",
+    "reponse_correcte": "Expert en cybersecurite",
+    "reponse_fausse_1": "Developpeur web",
+    "reponse_fausse_2": "Designer UX",
+    "reponse_fausse_3": "Chef de projet",
+    "difficulte": "Facile"
+  },
+  {
+    "theme_id": 2,
+    "intitule": "Un developpeur front-end s occupe de la base de donnees d un site web.",
+    "type_question": "VF",
+    "reponse_correcte": "Faux",
+    "reponse_fausse_1": "Vrai",
+    "reponse_fausse_2": null,
+    "reponse_fausse_3": null,
+    "difficulte": "Facile"
+  },
+  {
+    "theme_id": 2,
+    "intitule": "Un developpeur full-stack maitrise a la fois le front-end et le back-end.",
+    "type_question": "VF",
+    "reponse_correcte": "Vrai",
+    "reponse_fausse_1": "Faux",
+    "reponse_fausse_2": null,
+    "reponse_fausse_3": null,
+    "difficulte": "Facile"
+  },
+  {
+    "theme_id": 2,
+    "intitule": "Le Data Analyst cree des algorithmes d apprentissage automatique.",
+    "type_question": "VF",
+    "reponse_correcte": "Faux",
+    "reponse_fausse_1": "Vrai",
+    "reponse_fausse_2": null,
+    "reponse_fausse_3": null,
+    "difficulte": "Moyenne"
+  },
+  {
+    "theme_id": 2,
+    "intitule": "Le Scrum Master est responsable de l application de la methodologie Agile dans une equipe.",
+    "type_question": "VF",
+    "reponse_correcte": "Vrai",
+    "reponse_fausse_1": "Faux",
+    "reponse_fausse_2": null,
+    "reponse_fausse_3": null,
+    "difficulte": "Moyenne"
+  },
+  {
+    "theme_id": 2,
+    "intitule": "Quel metier analyse de grandes quantites de donnees pour en extraire des insights ?",
+    "type_question": "QCM",
+    "reponse_correcte": "Data Scientist",
+    "reponse_fausse_1": "Community Manager",
+    "reponse_fausse_2": "Webmaster",
+    "reponse_fausse_3": "Developpeur mobile",
+    "difficulte": "Moyenne"
+  },
+  {
+    "theme_id": 2,
+    "intitule": "Quel professionnel conçoit l experience utilisateur d une application ?",
+    "type_question": "QCM",
+    "reponse_correcte": "Designer UX",
+    "reponse_fausse_1": "Data Scientist",
+    "reponse_fausse_2": "Developpeur back-end",
+    "reponse_fausse_3": "Administrateur systeme",
+    "difficulte": "Moyenne"
+  },
+  {
+    "theme_id": 2,
+    "intitule": "Un administrateur reseau gere l infrastructure des communications d une entreprise.",
+    "type_question": "VF",
+    "reponse_correcte": "Vrai",
+    "reponse_fausse_1": "Faux",
+    "reponse_fausse_2": null,
+    "reponse_fausse_3": null,
+    "difficulte": "Moyenne"
+  },
+  {
+    "theme_id": 3,
+    "intitule": "En logique, deux propositions sont equivalentes si elles ont la meme table de verite.",
+    "type_question": "VF",
+    "reponse_correcte": "Vrai",
+    "reponse_fausse_1": "Faux",
+    "reponse_fausse_2": null,
+    "reponse_fausse_3": null,
+    "difficulte": "Difficile"
+  },
+  {
+    "theme_id": 3,
+    "intitule": "Quel principe affirme qu une proposition est soit vraie soit fausse, sans intermediaire ?",
+    "type_question": "QCM",
+    "reponse_correcte": "Principe du tiers exclu",
+    "reponse_fausse_1": "Principe de non-contradiction",
+    "reponse_fausse_2": "Principe d identite",
+    "reponse_fausse_3": "Principe de raison suffisante",
+    "difficulte": "Difficile"
+  },
+  {
+    "theme_id": 3,
+    "intitule": "Quelle loi logique affirme que (A ET B) equivaut a NON(NON A OU NON B) ?",
+    "type_question": "QCM",
+    "reponse_correcte": "Loi de De Morgan",
+    "reponse_fausse_1": "Loi de distributivite",
+    "reponse_fausse_2": "Loi d associativite",
+    "reponse_fausse_3": "Loi de commutativite",
+    "difficulte": "Difficile"
+  },
+  {
+    "theme_id": 3,
+    "intitule": "Un paradoxe logique est une affirmation qui semble contradictoire mais peut etre vraie.",
+    "type_question": "VF",
+    "reponse_correcte": "Vrai",
+    "reponse_fausse_1": "Faux",
+    "reponse_fausse_2": null,
+    "reponse_fausse_3": null,
+    "difficulte": "Difficile"
+  },
+  {
+    "theme_id": 3,
+    "intitule": "Une tautologie est une proposition toujours vraie, peu importe les valeurs de ses variables.",
+    "type_question": "VF",
+    "reponse_correcte": "Vrai",
+    "reponse_fausse_1": "Faux",
+    "reponse_fausse_2": null,
+    "reponse_fausse_3": null,
+    "difficulte": "Difficile"
+  },
+  {
+    "theme_id": 3,
+    "intitule": "En logique modale, l operateur \"necessairement\" signifie vrai dans tous les mondes possibles.",
+    "type_question": "VF",
+    "reponse_correcte": "Vrai",
+    "reponse_fausse_1": "Faux",
+    "reponse_fausse_2": null,
+    "reponse_fausse_3": null,
+    "difficulte": "Extreme"
+  },
+  {
+    "theme_id": 3,
+    "intitule": "Le theoreme d incompletude de Godel affirme qu un systeme formel coherent ne peut prouver toutes les verites.",
+    "type_question": "VF",
+    "reponse_correcte": "Vrai",
+    "reponse_fausse_1": "Faux",
+    "reponse_fausse_2": null,
+    "reponse_fausse_3": null,
+    "difficulte": "Extreme"
+  },
+  {
+    "theme_id": 3,
+    "intitule": "Quel paradoxe affirme \"Cette phrase est fausse\" ?",
+    "type_question": "QCM",
+    "reponse_correcte": "Paradoxe du menteur",
+    "reponse_fausse_1": "Paradoxe de Zenon",
+    "reponse_fausse_2": "Paradoxe de Russell",
+    "reponse_fausse_3": "Paradoxe de Sorite",
+    "difficulte": "Extreme"
+  },
+  {
+    "theme_id": 3,
+    "intitule": "Quelle est la valeur de verite de A XOR B quand A=1 et B=1 ?",
+    "type_question": "QCM",
+    "reponse_correcte": "0",
+    "reponse_fausse_1": "1",
+    "reponse_fausse_2": "Impossible",
+    "reponse_fausse_3": "Indeterminee",
+    "difficulte": "Extreme"
+  },
+  {
+    "theme_id": 3,
+    "intitule": "Quelle forme logique represente \"A implique B, et B implique C, donc A implique C\" ?",
+    "type_question": "QCM",
+    "reponse_correcte": "Transitivite",
+    "reponse_fausse_1": "Symetrie",
+    "reponse_fausse_2": "Antisymetrie",
+    "reponse_fausse_3": "Reflexivite",
+    "difficulte": "Extreme"
+  },
+  {
+    "theme_id": 3,
+    "intitule": "Dans une implication logique \"Si A alors B\", si A est faux, l implication est vraie.",
+    "type_question": "VF",
+    "reponse_correcte": "Vrai",
+    "reponse_fausse_1": "Faux",
+    "reponse_fausse_2": null,
+    "reponse_fausse_3": null,
+    "difficulte": "Facile"
+  },
+  {
+    "theme_id": 3,
+    "intitule": "La proposition \"Il pleut OU il fait beau\" est vraie si au moins une des deux conditions est vraie.",
+    "type_question": "VF",
+    "reponse_correcte": "Vrai",
+    "reponse_fausse_1": "Faux",
+    "reponse_fausse_2": null,
+    "reponse_fausse_3": null,
+    "difficulte": "Facile"
+  },
+  {
+    "theme_id": 3,
+    "intitule": "Quel connecteur logique signifie \"ET\" ?",
+    "type_question": "QCM",
+    "reponse_correcte": "Conjonction",
+    "reponse_fausse_1": "Disjonction",
+    "reponse_fausse_2": "Negation",
+    "reponse_fausse_3": "Implication",
+    "difficulte": "Facile"
+  },
+  {
+    "theme_id": 3,
+    "intitule": "Quelle est la negation de \"Tous les oiseaux volent\" ?",
+    "type_question": "QCM",
+    "reponse_correcte": "Au moins un oiseau ne vole pas",
+    "reponse_fausse_1": "Tous les oiseaux ne volent pas",
+    "reponse_fausse_2": "Certains oiseaux volent",
+    "reponse_fausse_3": "Aucun oiseau ne vole",
+    "difficulte": "Facile"
+  },
+  {
+    "theme_id": 3,
+    "intitule": "Si tous les chats sont des animaux, alors tous les animaux sont des chats.",
+    "type_question": "VF",
+    "reponse_correcte": "Faux",
+    "reponse_fausse_1": "Vrai",
+    "reponse_fausse_2": null,
+    "reponse_fausse_3": null,
+    "difficulte": "Facile"
+  },
+  {
+    "theme_id": 3,
+    "intitule": "Dans un syllogisme, combien y a-t-il de premisses ?",
+    "type_question": "QCM",
+    "reponse_correcte": "2",
+    "reponse_fausse_1": "3",
+    "reponse_fausse_2": "1",
+    "reponse_fausse_3": "4",
+    "difficulte": "Moyenne"
+  },
+  {
+    "theme_id": 3,
+    "intitule": "L operateur logique OU inclusif est vrai si au moins l une des propositions est vraie.",
+    "type_question": "VF",
+    "reponse_correcte": "Vrai",
+    "reponse_fausse_1": "Faux",
+    "reponse_fausse_2": null,
+    "reponse_fausse_3": null,
+    "difficulte": "Moyenne"
+  },
+  {
+    "theme_id": 3,
+    "intitule": "La contraposee de \"Si A alors B\" est \"Si non B alors non A\".",
+    "type_question": "VF",
+    "reponse_correcte": "Vrai",
+    "reponse_fausse_1": "Faux",
+    "reponse_fausse_2": null,
+    "reponse_fausse_3": null,
+    "difficulte": "Moyenne"
+  },
+  {
+    "theme_id": 3,
+    "intitule": "Quelle est la valeur de verite de \"Vrai ET Faux\" ?",
+    "type_question": "QCM",
+    "reponse_correcte": "Faux",
+    "reponse_fausse_1": "Vrai",
+    "reponse_fausse_2": "Indetermine",
+    "reponse_fausse_3": "Impossible",
+    "difficulte": "Moyenne"
+  },
+  {
+    "theme_id": 3,
+    "intitule": "Une contradiction est une affirmation qui ne peut jamais etre vraie.",
+    "type_question": "VF",
+    "reponse_correcte": "Vrai",
+    "reponse_fausse_1": "Faux",
+    "reponse_fausse_2": null,
+    "reponse_fausse_3": null,
+    "difficulte": "Moyenne"
+  },
+  {
+    "theme_id": 4,
+    "intitule": "La Grande Muraille de Chine est visible depuis l espace a l oeil nu.",
+    "type_question": "VF",
+    "reponse_correcte": "Faux",
+    "reponse_fausse_1": "Vrai",
+    "reponse_fausse_2": null,
+    "reponse_fausse_3": null,
+    "difficulte": "Difficile"
+  },
+  {
+    "theme_id": 4,
+    "intitule": "Le film \"Le Parrain\" a ete realise par Francis Ford Coppola.",
+    "type_question": "VF",
+    "reponse_correcte": "Vrai",
+    "reponse_fausse_1": "Faux",
+    "reponse_fausse_2": null,
+    "reponse_fausse_3": null,
+    "difficulte": "Difficile"
+  },
+  {
+    "theme_id": 4,
+    "intitule": "Quelle annee a vu sortir le premier iPhone ?",
+    "type_question": "QCM",
+    "reponse_correcte": "2007",
+    "reponse_fausse_1": "2005",
+    "reponse_fausse_2": "2010",
+    "reponse_fausse_3": "2008",
+    "difficulte": "Difficile"
+  },
+  {
+    "theme_id": 4,
+    "intitule": "Quelle langue est la plus parlee au monde (nombre de locuteurs natifs) ?",
+    "type_question": "QCM",
+    "reponse_correcte": "Chinois mandarin",
+    "reponse_fausse_1": "Anglais",
+    "reponse_fausse_2": "Hindi",
+    "reponse_fausse_3": "Espagnol",
+    "difficulte": "Difficile"
+  },
+  {
+    "theme_id": 4,
+    "intitule": "Qui a ecrit \"1984\" ?",
+    "type_question": "QCM",
+    "reponse_correcte": "George Orwell",
+    "reponse_fausse_1": "Aldous Huxley",
+    "reponse_fausse_2": "Isaac Asimov",
+    "reponse_fausse_3": "Ray Bradbury",
+    "difficulte": "Difficile"
+  },
+  {
+    "theme_id": 4,
+    "intitule": "Le premier ordinateur electronique programmable etait l ENIAC.",
+    "type_question": "VF",
+    "reponse_correcte": "Vrai",
+    "reponse_fausse_1": "Faux",
+    "reponse_fausse_2": null,
+    "reponse_fausse_3": null,
+    "difficulte": "Extreme"
+  },
+  {
+    "theme_id": 4,
+    "intitule": "Le theoreme de Fermat est reste non prouve pendant plus de 350 ans.",
+    "type_question": "VF",
+    "reponse_correcte": "Vrai",
+    "reponse_fausse_1": "Faux",
+    "reponse_fausse_2": null,
+    "reponse_fausse_3": null,
+    "difficulte": "Extreme"
+  },
+  {
+    "theme_id": 4,
+    "intitule": "Quel compositeur a ecrit la 9e Symphonie avec \"L Ode a la Joie\" ?",
+    "type_question": "QCM",
+    "reponse_correcte": "Beethoven",
+    "reponse_fausse_1": "Brahms",
+    "reponse_fausse_2": "Mozart",
+    "reponse_fausse_3": "Bach",
+    "difficulte": "Extreme"
+  },
+  {
+    "theme_id": 4,
+    "intitule": "Quel jeu video est considere comme le plus vendu de l histoire ?",
+    "type_question": "QCM",
+    "reponse_correcte": "Minecraft",
+    "reponse_fausse_1": "Tetris",
+    "reponse_fausse_2": "GTA V",
+    "reponse_fausse_3": "Fortnite",
+    "difficulte": "Extreme"
+  },
+  {
+    "theme_id": 4,
+    "intitule": "Quelle civilisation a construit Machu Picchu ?",
+    "type_question": "QCM",
+    "reponse_correcte": "Les Incas",
+    "reponse_fausse_1": "Les Mayas",
+    "reponse_fausse_2": "Les Olmèques",
+    "reponse_fausse_3": "Les Aztèques",
+    "difficulte": "Extreme"
+  },
+  {
+    "theme_id": 4,
+    "intitule": "Combien y a-t-il de continents sur Terre ?",
+    "type_question": "QCM",
+    "reponse_correcte": "7",
+    "reponse_fausse_1": "5",
+    "reponse_fausse_2": "8",
+    "reponse_fausse_3": "6",
+    "difficulte": "Facile"
+  },
+  {
+    "theme_id": 4,
+    "intitule": "La Tour Eiffel se trouve a Paris.",
+    "type_question": "VF",
+    "reponse_correcte": "Vrai",
+    "reponse_fausse_1": "Faux",
+    "reponse_fausse_2": null,
+    "reponse_fausse_3": null,
+    "difficulte": "Facile"
+  },
+  {
+    "theme_id": 4,
+    "intitule": "Mozart etait un compositeur de musique classique.",
+    "type_question": "VF",
+    "reponse_correcte": "Vrai",
+    "reponse_fausse_1": "Faux",
+    "reponse_fausse_2": null,
+    "reponse_fausse_3": null,
+    "difficulte": "Facile"
+  },
+  {
+    "theme_id": 4,
+    "intitule": "Quel studio a cree le film Toy Story ?",
+    "type_question": "QCM",
+    "reponse_correcte": "Pixar",
+    "reponse_fausse_1": "DreamWorks",
+    "reponse_fausse_2": "Disney Animation",
+    "reponse_fausse_3": "Illumination",
+    "difficulte": "Facile"
+  },
+  {
+    "theme_id": 4,
+    "intitule": "Victor Hugo a ecrit Les Miserables.",
+    "type_question": "VF",
+    "reponse_correcte": "Vrai",
+    "reponse_fausse_1": "Faux",
+    "reponse_fausse_2": null,
+    "reponse_fausse_3": null,
+    "difficulte": "Facile"
+  },
+  {
+    "theme_id": 4,
+    "intitule": "L Empire romain d Occident a chu te en 476 apres J.-C.",
+    "type_question": "VF",
+    "reponse_correcte": "Vrai",
+    "reponse_fausse_1": "Faux",
+    "reponse_fausse_2": null,
+    "reponse_fausse_3": null,
+    "difficulte": "Moyenne"
+  },
+  {
+    "theme_id": 4,
+    "intitule": "La photosynthese permet aux plantes de produire de l oxygene.",
+    "type_question": "VF",
+    "reponse_correcte": "Vrai",
+    "reponse_fausse_1": "Faux",
+    "reponse_fausse_2": null,
+    "reponse_fausse_3": null,
+    "difficulte": "Moyenne"
+  },
+  {
+    "theme_id": 4,
+    "intitule": "Le Louvre est le musee le plus visite au monde.",
+    "type_question": "VF",
+    "reponse_correcte": "Vrai",
+    "reponse_fausse_1": "Faux",
+    "reponse_fausse_2": null,
+    "reponse_fausse_3": null,
+    "difficulte": "Moyenne"
+  },
+  {
+    "theme_id": 4,
+    "intitule": "Quelle planete est la plus proche du Soleil ?",
+    "type_question": "QCM",
+    "reponse_correcte": "Mercure",
+    "reponse_fausse_1": "Mars",
+    "reponse_fausse_2": "Terre",
+    "reponse_fausse_3": "Venus",
+    "difficulte": "Moyenne"
+  },
+  {
+    "theme_id": 4,
+    "intitule": "Qui a peint La Joconde ?",
+    "type_question": "QCM",
+    "reponse_correcte": "Leonard de Vinci",
+    "reponse_fausse_1": "Raphael",
+    "reponse_fausse_2": "Botticelli",
+    "reponse_fausse_3": "Michel-Ange",
+    "difficulte": "Moyenne"
+  },
+  {
+    "theme_id": 5,
+    "intitule": "En anglais, les adjectifs se placent apres le nom.",
+    "type_question": "VF",
+    "reponse_correcte": "Faux",
+    "reponse_fausse_1": "Vrai",
+    "reponse_fausse_2": null,
+    "reponse_fausse_3": null,
+    "difficulte": "Difficile"
+  },
+  {
+    "theme_id": 5,
+    "intitule": "Le mot \"Sensible\" en anglais signifie \"sense, raisonnable\", pas \"sensible\".",
+    "type_question": "VF",
+    "reponse_correcte": "Vrai",
+    "reponse_fausse_1": "Faux",
+    "reponse_fausse_2": null,
+    "reponse_fausse_3": null,
+    "difficulte": "Difficile"
+  },
+  {
+    "theme_id": 5,
+    "intitule": "Le past perfect se forme avec \"had\" + participe passe.",
+    "type_question": "VF",
+    "reponse_correcte": "Vrai",
+    "reponse_fausse_1": "Faux",
+    "reponse_fausse_2": null,
+    "reponse_fausse_3": null,
+    "difficulte": "Difficile"
+  },
+  {
+    "theme_id": 5,
+    "intitule": "Quel est le superlatif de \"far\" ?",
+    "type_question": "QCM",
+    "reponse_correcte": "Farthest",
+    "reponse_fausse_1": "Farrer",
+    "reponse_fausse_2": "Farrest",
+    "reponse_fausse_3": "More far",
+    "difficulte": "Difficile"
+  },
+  {
+    "theme_id": 5,
+    "intitule": "Quelle phrase utilise correctement le present perfect ?",
+    "type_question": "QCM",
+    "reponse_correcte": "I have lived here for 5 years",
+    "reponse_fausse_1": "I live here for 5 years",
+    "reponse_fausse_2": "I am living here for 5 years",
+    "reponse_fausse_3": "I lived here for 5 years",
+    "difficulte": "Difficile"
+  },
+  {
+    "theme_id": 5,
+    "intitule": "Les \"phrasal verbs\" sont des expressions idiomatiques composees d un verbe et d une particule.",
+    "type_question": "VF",
+    "reponse_correcte": "Vrai",
+    "reponse_fausse_1": "Faux",
+    "reponse_fausse_2": null,
+    "reponse_fausse_3": null,
+    "difficulte": "Extreme"
+  },
+  {
+    "theme_id": 5,
+    "intitule": "Quel mot complete correctement : \"If I ____ rich, I would travel the world\" ?",
+    "type_question": "QCM",
+    "reponse_correcte": "were",
+    "reponse_fausse_1": "be",
+    "reponse_fausse_2": "was",
+    "reponse_fausse_3": "am",
+    "difficulte": "Extreme"
+  },
+  {
+    "theme_id": 5,
+    "intitule": "Quelle phrase est au present perfect continuous ?",
+    "type_question": "QCM",
+    "reponse_correcte": "I have been working all day",
+    "reponse_fausse_1": "I am working all day",
+    "reponse_fausse_2": "I was working all day",
+    "reponse_fausse_3": "I have worked all day",
+    "difficulte": "Extreme"
+  },
+  {
+    "theme_id": 5,
+    "intitule": "Quelle phrase utilise le conditionnel de type 3 ?",
+    "type_question": "QCM",
+    "reponse_correcte": "If I had known, I would have helped",
+    "reponse_fausse_1": "If I know, I will help",
+    "reponse_fausse_2": "If I have known, I help",
+    "reponse_fausse_3": "If I knew, I would help",
+    "difficulte": "Extreme"
+  },
+  {
+    "theme_id": 5,
+    "intitule": "Un verbe irregulier en anglais ne suit pas la regle -ed au passe.",
+    "type_question": "VF",
+    "reponse_correcte": "Vrai",
+    "reponse_fausse_1": "Faux",
+    "reponse_fausse_2": null,
+    "reponse_fausse_3": null,
+    "difficulte": "Extreme"
+  },
+  {
+    "theme_id": 5,
+    "intitule": "\"I am 18 years\" est grammaticalement correct.",
+    "type_question": "VF",
+    "reponse_correcte": "Faux",
+    "reponse_fausse_1": "Vrai",
+    "reponse_fausse_2": null,
+    "reponse_fausse_3": null,
+    "difficulte": "Facile"
+  },
+  {
+    "theme_id": 5,
+    "intitule": "Apple signifie pomme.",
+    "type_question": "VF",
+    "reponse_correcte": "Vrai",
+    "reponse_fausse_1": "Faux",
+    "reponse_fausse_2": null,
+    "reponse_fausse_3": null,
+    "difficulte": "Facile"
+  },
+  {
+    "theme_id": 5,
+    "intitule": "Comment dit-on \"Bonjour\" en anglais ?",
+    "type_question": "QCM",
+    "reponse_correcte": "Hello",
+    "reponse_fausse_1": "Goodbye",
+    "reponse_fausse_2": "Sorry",
+    "reponse_fausse_3": "Thanks",
+    "difficulte": "Facile"
+  },
+  {
+    "theme_id": 5,
+    "intitule": "Le mot \"Cat\" signifie chat en anglais.",
+    "type_question": "VF",
+    "reponse_correcte": "Vrai",
+    "reponse_fausse_1": "Faux",
+    "reponse_fausse_2": null,
+    "reponse_fausse_3": null,
+    "difficulte": "Facile"
+  },
+  {
+    "theme_id": 5,
+    "intitule": "Que signifie \"Thank you\" ?",
+    "type_question": "QCM",
+    "reponse_correcte": "Merci",
+    "reponse_fausse_1": "Pardon",
+    "reponse_fausse_2": "S il vous plait",
+    "reponse_fausse_3": "Au revoir",
+    "difficulte": "Facile"
+  },
+  {
+    "theme_id": 5,
+    "intitule": "Comment forme-t-on le comparatif de \"good\" ?",
+    "type_question": "QCM",
+    "reponse_correcte": "Better",
+    "reponse_fausse_1": "Gooder",
+    "reponse_fausse_2": "Goodest",
+    "reponse_fausse_3": "More good",
+    "difficulte": "Moyenne"
+  },
+  {
+    "theme_id": 5,
+    "intitule": "L auxiliaire \"do\" est utilise pour former des questions au present simple.",
+    "type_question": "VF",
+    "reponse_correcte": "Vrai",
+    "reponse_fausse_1": "Faux",
+    "reponse_fausse_2": null,
+    "reponse_fausse_3": null,
+    "difficulte": "Moyenne"
+  },
+  {
+    "theme_id": 5,
+    "intitule": "Le mot \"Actually\" signifie \"actuellement\" en francais.",
+    "type_question": "VF",
+    "reponse_correcte": "Faux",
+    "reponse_fausse_1": "Vrai",
+    "reponse_fausse_2": null,
+    "reponse_fausse_3": null,
+    "difficulte": "Moyenne"
+  },
+  {
+    "theme_id": 5,
+    "intitule": "Quelle phrase est correcte ?",
+    "type_question": "QCM",
+    "reponse_correcte": "She doesn t like coffee",
+    "reponse_fausse_1": "She not like coffee",
+    "reponse_fausse_2": "She don t like coffee",
+    "reponse_fausse_3": "She doesn t likes coffee",
+    "difficulte": "Moyenne"
+  },
+  {
+    "theme_id": 5,
+    "intitule": "Their, they re et there signifient la meme chose.",
+    "type_question": "VF",
+    "reponse_correcte": "Faux",
+    "reponse_fausse_1": "Vrai",
+    "reponse_fausse_2": null,
+    "reponse_fausse_3": null,
+    "difficulte": "Moyenne"
+  },
+  {
+    "theme_id": 6,
+    "intitule": "CSS signifie Cascading Style Sheets.",
+    "type_question": "VF",
+    "reponse_correcte": "Vrai",
+    "reponse_fausse_1": "Faux",
+    "reponse_fausse_2": null,
+    "reponse_fausse_3": null,
+    "difficulte": "Difficile"
+  },
+  {
+    "theme_id": 6,
+    "intitule": "En base de donnees, que signifie le \"S\" de SQL ?",
+    "type_question": "QCM",
+    "reponse_correcte": "Structured",
+    "reponse_fausse_1": "Script",
+    "reponse_fausse_2": "Serial",
+    "reponse_fausse_3": "Selected",
+    "difficulte": "Difficile"
+  },
+  {
+    "theme_id": 6,
+    "intitule": "En securite informatique, le chiffrement protege les donnees contre...",
+    "type_question": "QCM",
+    "reponse_correcte": "Les acces non autorises",
+    "reponse_fausse_1": "Les virus",
+    "reponse_fausse_2": "Les pertes de courant",
+    "reponse_fausse_3": "Les bugs graphiques",
+    "difficulte": "Difficile"
+  },
+  {
+    "theme_id": 6,
+    "intitule": "Le format .png permet de stocker des images avec transparence.",
+    "type_question": "VF",
+    "reponse_correcte": "Vrai",
+    "reponse_fausse_1": "Faux",
+    "reponse_fausse_2": null,
+    "reponse_fausse_3": null,
+    "difficulte": "Difficile"
+  },
+  {
+    "theme_id": 6,
+    "intitule": "Les balises <h1> a <h6> en HTML servent a :",
+    "type_question": "QCM",
+    "reponse_correcte": "Structurer des titres et sous-titres",
+    "reponse_fausse_1": "Ajouter des images",
+    "reponse_fausse_2": "Ecrire des liens",
+    "reponse_fausse_3": "Creer des tableaux",
+    "difficulte": "Difficile"
+  },
+  {
+    "theme_id": 6,
+    "intitule": "Pour trier une liste croissante en Python, on utilise la methode :",
+    "type_question": "QCM",
+    "reponse_correcte": "sort()",
+    "reponse_fausse_1": "shuffle()",
+    "reponse_fausse_2": "add()",
+    "reponse_fausse_3": "reverse()",
+    "difficulte": "Difficile"
+  },
+  {
+    "theme_id": 6,
+    "intitule": "Python est un langage apprecie pour ses nombreuses bibliotheques.",
+    "type_question": "VF",
+    "reponse_correcte": "Vrai",
+    "reponse_fausse_1": "Faux",
+    "reponse_fausse_2": null,
+    "reponse_fausse_3": null,
+    "difficulte": "Difficile"
+  },
+  {
+    "theme_id": 6,
+    "intitule": "Quel protocole est souvent utilise pour etablir une connexion securisee a distance a un serveur ?",
+    "type_question": "QCM",
+    "reponse_correcte": "SSH",
+    "reponse_fausse_1": "SMTP",
+    "reponse_fausse_2": "HTTP",
+    "reponse_fausse_3": "FTP",
+    "difficulte": "Difficile"
+  },
+  {
+    "theme_id": 6,
+    "intitule": "Quelle attaque informatique consiste a dupliquer un site pour voler des informations d un utilisateur ?",
+    "type_question": "QCM",
+    "reponse_correcte": "Phishing",
+    "reponse_fausse_1": "DDoS",
+    "reponse_fausse_2": "Spoofing",
+    "reponse_fausse_3": "Brute Force",
+    "difficulte": "Difficile"
+  },
+  {
+    "theme_id": 6,
+    "intitule": "Quelle est la technique de sauvegarde qui ne copie QUE les nouvelles donnees depuis la derniere sauvegarde complete ?",
+    "type_question": "QCM",
+    "reponse_correcte": "Sauvegarde incrementielle",
+    "reponse_fausse_1": "Sauvegarde complete",
+    "reponse_fausse_2": "Sauvegarde partitionnee",
+    "reponse_fausse_3": "Sauvegarde differentielle",
+    "difficulte": "Difficile"
+  },
+  {
+    "theme_id": 6,
+    "intitule": "Docker est surtout utilise pour...",
+    "type_question": "QCM",
+    "reponse_correcte": "Isoler des applications et leurs dependances",
+    "reponse_fausse_1": "Tester les performances reseau",
+    "reponse_fausse_2": "Coder des jeux video",
+    "reponse_fausse_3": "Gerer l interface utilisateur",
+    "difficulte": "Extreme"
+  },
+  {
+    "theme_id": 6,
+    "intitule": "En SQL, le mot-cle \"JOIN\" permet de :",
+    "type_question": "QCM",
+    "reponse_correcte": "Relier deux tables",
+    "reponse_fausse_1": "Faire une sauvegarde",
+    "reponse_fausse_2": "Trier des donnees",
+    "reponse_fausse_3": "Supprimer des colonnes",
+    "difficulte": "Extreme"
+  },
+  {
+    "theme_id": 6,
+    "intitule": "Le DNS fait la correspondance entre un nom de domaine et une adresse IP.",
+    "type_question": "VF",
+    "reponse_correcte": "Vrai",
+    "reponse_fausse_1": "Faux",
+    "reponse_fausse_2": null,
+    "reponse_fausse_3": null,
+    "difficulte": "Extreme"
+  },
+  {
+    "theme_id": 6,
+    "intitule": "Le HTTPS chiffre les echanges entre...",
+    "type_question": "QCM",
+    "reponse_correcte": "Votre navigateur et le site",
+    "reponse_fausse_1": "Deux imprimantes",
+    "reponse_fausse_2": "Deux documents Word",
+    "reponse_fausse_3": "Votre ecran et votre souris",
+    "difficulte": "Extreme"
+  },
+  {
+    "theme_id": 6,
+    "intitule": "Le Machine Learning supervise necessite des donnees etiquetees",
+    "type_question": "VF",
+    "reponse_correcte": "Vrai",
+    "reponse_fausse_1": "Faux",
+    "reponse_fausse_2": null,
+    "reponse_fausse_3": null,
+    "difficulte": "Extreme"
+  },
+  {
+    "theme_id": 6,
+    "intitule": "Si un site web n est pas \"responsive\", il...",
+    "type_question": "QCM",
+    "reponse_correcte": "S affiche mal sur mobile",
+    "reponse_fausse_1": "N utilise pas JavaScript",
+    "reponse_fausse_2": "N a pas d images",
+    "reponse_fausse_3": "A une mauvaise securite",
+    "difficulte": "Extreme"
+  },
+  {
+    "theme_id": 6,
+    "intitule": "Sur Internet, quel protocole utilise le port 443 par defaut ?",
+    "type_question": "QCM",
+    "reponse_correcte": "HTTPS",
+    "reponse_fausse_1": "HTTP",
+    "reponse_fausse_2": "FTP",
+    "reponse_fausse_3": "SSH",
+    "difficulte": "Extreme"
+  },
+  {
+    "theme_id": 6,
+    "intitule": "Un algorithme \"greedy\" (glouton) prend...",
+    "type_question": "QCM",
+    "reponse_correcte": "La meilleure decision a chaque etape",
+    "reponse_fausse_1": "Toujours la premiere solution",
+    "reponse_fausse_2": "La methode la plus gourmande en memoire",
+    "reponse_fausse_3": "La solution la plus lente",
+    "difficulte": "Extreme"
+  },
+  {
+    "theme_id": 6,
+    "intitule": "Un pare-feu sert principalement a...",
+    "type_question": "QCM",
+    "reponse_correcte": "Bloquer les echanges non autorises",
+    "reponse_fausse_1": "Creer des virus",
+    "reponse_fausse_2": "Illustrer une page Web",
+    "reponse_fausse_3": "Ameliorer la vitesse d Internet",
+    "difficulte": "Extreme"
+  },
+  {
+    "theme_id": 6,
+    "intitule": "Une API permet a deux applications de...",
+    "type_question": "QCM",
+    "reponse_correcte": "Communiquer entre elles",
+    "reponse_fausse_1": "Compiler du code",
+    "reponse_fausse_2": "Encoder une video",
+    "reponse_fausse_3": "Chiffrer des emails",
+    "difficulte": "Extreme"
+  },
+  {
+    "theme_id": 6,
+    "intitule": "Combien d octets contient un kilooctet ?",
+    "type_question": "QCM",
+    "reponse_correcte": "1024",
+    "reponse_fausse_1": "1000",
+    "reponse_fausse_2": "512",
+    "reponse_fausse_3": "2048",
+    "difficulte": "Facile"
+  },
+  {
+    "theme_id": 6,
+    "intitule": "HTML signifie HyperText Markup Language.",
+    "type_question": "VF",
+    "reponse_correcte": "Vrai",
+    "reponse_fausse_1": "Faux",
+    "reponse_fausse_2": null,
+    "reponse_fausse_3": null,
+    "difficulte": "Facile"
+  },
+  {
+    "theme_id": 6,
+    "intitule": "Le langage CSS est utilise pour styliser les pages web.",
+    "type_question": "VF",
+    "reponse_correcte": "Vrai",
+    "reponse_fausse_1": "Faux",
+    "reponse_fausse_2": null,
+    "reponse_fausse_3": null,
+    "difficulte": "Facile"
+  },
+  {
+    "theme_id": 6,
+    "intitule": "Quel format de fichier est typique pour une image ?",
+    "type_question": "QCM",
+    "reponse_correcte": ".jpg",
+    "reponse_fausse_1": ".html",
+    "reponse_fausse_2": ".mp3",
+    "reponse_fausse_3": ".exe",
+    "difficulte": "Facile"
+  },
+  {
+    "theme_id": 6,
+    "intitule": "Quel protocole est utilise pour envoyer des e-mails ?",
+    "type_question": "QCM",
+    "reponse_correcte": "SMTP",
+    "reponse_fausse_1": "HTTP",
+    "reponse_fausse_2": "SSH",
+    "reponse_fausse_3": "FTP",
+    "difficulte": "Facile"
+  },
+  {
+    "theme_id": 6,
+    "intitule": "Quel symbole est utilise pour les commentaires en Python ?",
+    "type_question": "QCM",
+    "reponse_correcte": "#",
+    "reponse_fausse_1": "//",
+    "reponse_fausse_2": "/*",
+    "reponse_fausse_3": "<!--",
+    "difficulte": "Facile"
+  },
+  {
+    "theme_id": 6,
+    "intitule": "Quelle touche permet de copier du texte sur Windows ?",
+    "type_question": "QCM",
+    "reponse_correcte": "Ctrl+C",
+    "reponse_fausse_1": "Ctrl+Z",
+    "reponse_fausse_2": "Ctrl+V",
+    "reponse_fausse_3": "Ctrl+X",
+    "difficulte": "Facile"
+  },
+  {
+    "theme_id": 6,
+    "intitule": "RAM signifie Random Access Memory.",
+    "type_question": "VF",
+    "reponse_correcte": "Vrai",
+    "reponse_fausse_1": "Faux",
+    "reponse_fausse_2": null,
+    "reponse_fausse_3": null,
+    "difficulte": "Facile"
+  },
+  {
+    "theme_id": 6,
+    "intitule": "URL signifie Uniform Resource Locator.",
+    "type_question": "VF",
+    "reponse_correcte": "Vrai",
+    "reponse_fausse_1": "Faux",
+    "reponse_fausse_2": null,
+    "reponse_fausse_3": null,
+    "difficulte": "Facile"
+  },
+  {
+    "theme_id": 6,
+    "intitule": "Un bit peut avoir deux valeurs : 0 ou 1.",
+    "type_question": "VF",
+    "reponse_correcte": "Vrai",
+    "reponse_fausse_1": "Faux",
+    "reponse_fausse_2": null,
+    "reponse_fausse_3": null,
+    "difficulte": "Facile"
+  },
+  {
+    "theme_id": 6,
+    "intitule": "En SQL, quelle commande sert a selectionner des donnees ?",
+    "type_question": "QCM",
+    "reponse_correcte": "SELECT",
+    "reponse_fausse_1": "DELETE",
+    "reponse_fausse_2": "UPDATE",
+    "reponse_fausse_3": "INSERT",
+    "difficulte": "Moyenne"
+  },
+  {
+    "theme_id": 6,
+    "intitule": "Git permet de conserver differentes versions de vos fichiers.",
+    "type_question": "VF",
+    "reponse_correcte": "Vrai",
+    "reponse_fausse_1": "Faux",
+    "reponse_fausse_2": null,
+    "reponse_fausse_3": null,
+    "difficulte": "Moyenne"
+  },
+  {
+    "theme_id": 6,
+    "intitule": "HTTPS est plus securise que HTTP car il chiffre les echanges.",
+    "type_question": "VF",
+    "reponse_correcte": "Vrai",
+    "reponse_fausse_1": "Faux",
+    "reponse_fausse_2": null,
+    "reponse_fausse_3": null,
+    "difficulte": "Moyenne"
+  },
+  {
+    "theme_id": 6,
+    "intitule": "JSON est souvent utilise pour transmettre des donnees via Internet.",
+    "type_question": "VF",
+    "reponse_correcte": "Vrai",
+    "reponse_fausse_1": "Faux",
+    "reponse_fausse_2": null,
+    "reponse_fausse_3": null,
+    "difficulte": "Moyenne"
+  },
+  {
+    "theme_id": 6,
+    "intitule": "Le Cloud signifie stocker des donnees sur Internet.",
+    "type_question": "VF",
+    "reponse_correcte": "Vrai",
+    "reponse_fausse_1": "Faux",
+    "reponse_fausse_2": null,
+    "reponse_fausse_3": null,
+    "difficulte": "Moyenne"
+  },
+  {
+    "theme_id": 6,
+    "intitule": "Le moteur de recherche Google a ete fonde fin des annees 1990.",
+    "type_question": "VF",
+    "reponse_correcte": "Vrai",
+    "reponse_fausse_1": "Faux",
+    "reponse_fausse_2": null,
+    "reponse_fausse_3": null,
+    "difficulte": "Moyenne"
+  },
+  {
+    "theme_id": 6,
+    "intitule": "Quel design pattern garantit qu une classe n a qu une seule instance ?",
+    "type_question": "QCM",
+    "reponse_correcte": "Singleton",
+    "reponse_fausse_1": "Observer",
+    "reponse_fausse_2": "Factory",
+    "reponse_fausse_3": "Decorator",
+    "difficulte": "Moyenne"
+  },
+  {
+    "theme_id": 6,
+    "intitule": "Quelle methode HTTP est utilisee pour recuperer des donnees d un site web ?",
+    "type_question": "QCM",
+    "reponse_correcte": "GET",
+    "reponse_fausse_1": "PUT",
+    "reponse_fausse_2": "DELETE",
+    "reponse_fausse_3": "POST",
+    "difficulte": "Moyenne"
+  },
+  {
+    "theme_id": 6,
+    "intitule": "Quelle structure de donnees retire en premier l element insere en dernier ?",
+    "type_question": "QCM",
+    "reponse_correcte": "Pile",
+    "reponse_fausse_1": "File",
+    "reponse_fausse_2": "Liste",
+    "reponse_fausse_3": "Tableau",
+    "difficulte": "Moyenne"
+  },
+  {
+    "theme_id": 6,
+    "intitule": "TCP/IP sert a gerer les connexions sur Internet.",
+    "type_question": "VF",
+    "reponse_correcte": "Vrai",
+    "reponse_fausse_1": "Faux",
+    "reponse_fausse_2": null,
+    "reponse_fausse_3": null,
+    "difficulte": "Moyenne"
+  }
+]
