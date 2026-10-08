@@ -1,8 +1,12 @@
 <?php
 
 use App\Http\Controllers\AuthentificationController;
+use App\Http\Controllers\PartieController;
+
 use Illuminate\Http\Request;
+
 use Illuminate\Support\Facades\Route;
+
 
 Route::post('/inscription', [
     AuthentificationController::class,
@@ -21,4 +25,9 @@ Route::post('/connexion', [
 Route::post('/deconnexion', [
     AuthentificationController::class,
     'deconnexion',
+])->middleware('auth:sanctum');
+
+Route::post('/parties/demarrer', [
+    PartieController::class,
+    'demarrer',
 ])->middleware('auth:sanctum');
