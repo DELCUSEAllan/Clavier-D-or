@@ -30,3 +30,9 @@ Route::post('/parties/demarrer', [
     PartieController::class,
     'demarrer',])
     ->middleware('auth:sanctum');
+
+Route::get(
+    '/parties/{partie}/question-suivante',[
+    PartieController::class,
+    'questionSuivante'])
+    ->middleware('auth:sanctum');

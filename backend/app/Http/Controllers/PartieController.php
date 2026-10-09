@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 
 use App\Models\Question;
 use App\Models\Theme;
+use App\Models\Partie;
 
 class PartieController extends Controller
 {
@@ -77,5 +78,58 @@ class PartieController extends Controller
         'theme' => $theme->nom,
         'nombre_questions' => $questions->count(),
     ], 201);
+    }
+
+
+    public function questionSuivante(Request $request,Partie $partie): JsonResponse {
+    if ($partie->utilisateur_id !== $request->user()->id) {
+        return response()->json([
+            'message' => 'Vous ne pouvez pas accéder à cette partie.',
+        ], 403);
+    }
+
+    if ($partie->statut !== 'en_cours') {
+        return response()->json([
+            'message' => 'Cette partie n’est plus en cours.',
+        ], 422);
+    }
+
+    $questionPosee = $partie->questionsPosees()
+        ->whereNull('est_correcte')
+        ->with('question')
+        ->orderBy('ordre')
+        ->first();
+
+    if (!$questionPosee) {
+        return response()->json([
+            'message' => 'Toutes les questions de cette tentative ont été répondues.',
+            'terminee' => true,
+        ]);
+    }
+
+    $question = $questionPosee->question;
+
+    $propositions = collect([
+        $question->reponse_correcte,
+        $question->reponse_fausse_1,
+        $question->reponse_fausse_2,
+        $question->reponse_fausse_3,
+    ])
+        ->filter(fn ($reponse) => $reponse !== null)
+        ->shuffle()
+        ->values();
+
+    return response()->json([
+        'terminee' => false,
+
+        'question' => [
+            'question_posee_id' => $questionPosee->id,
+            'ordre' => $questionPosee->ordre,
+            'intitule' => $question->intitule,
+            'type_question' => $question->type_question,
+            'difficulte' => $question->difficulte,
+            'propositions' => $propositions,
+            ],
+        ]);
     }
 }
