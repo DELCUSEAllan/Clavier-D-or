@@ -10,24 +10,23 @@ use Illuminate\Support\Facades\Route;
 
 Route::post('/inscription', [
     AuthentificationController::class,
-    'inscription',
-]);
+    'inscription'])
+    ->middleware('throttle:3,1');
 
 Route::get('/utilisateur', function (Request $request) {
     return $request->user();
 })->middleware('auth:sanctum');
 
 Route::post('/connexion', [
-    AuthentificationController::class,
-    'connexion',
-]);
+    AuthentificationController::class,'connexion',])
+    ->middleware('throttle:5,1');
 
 Route::post('/deconnexion', [
     AuthentificationController::class,
-    'deconnexion',
-])->middleware('auth:sanctum');
+    'deconnexion',])
+    ->middleware('auth:sanctum');
 
 Route::post('/parties/demarrer', [
     PartieController::class,
-    'demarrer',
-])->middleware('auth:sanctum');
+    'demarrer',])
+    ->middleware('auth:sanctum');
