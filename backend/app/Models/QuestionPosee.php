@@ -16,6 +16,7 @@ class QuestionPosee extends Model
         'reponse_donnee',
         'est_correcte',
         'joker_utilise',
+        'est_remplacee_par_joker',
     ];
 
     protected function casts(): array
@@ -23,6 +24,7 @@ class QuestionPosee extends Model
         return [
             'est_correcte' => 'boolean',
             'joker_utilise' => 'boolean',
+            'est_remplacee_par_joker' => 'boolean',
         ];
     }
 
