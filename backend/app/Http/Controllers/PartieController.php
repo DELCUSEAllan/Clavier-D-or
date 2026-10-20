@@ -169,4 +169,78 @@ class PartieController extends Controller
             ],
         ]);
     }
+    public function repondre(Request $request, Partie $partie): JsonResponse
+    {
+        if ($partie->utilisateur_id !== $request->user()->id) {
+            return response()->json([
+                'message' => 'Vous ne pouvez pas accéder à cette partie.',
+            ], 403);
+        }
+
+        if ($partie->statut !== 'en_cours') {
+            return response()->json([
+                'message' => 'Cette partie n’est plus en cours.',
+            ], 422);
+        }
+
+        $donnees = $request->validate([
+            'question_posee_id' => [
+                'required',
+                'integer',
+            ],
+            'reponse' => [
+                'required',
+                'string',
+                'max:500',
+            ],
+        ]);
+
+        $questionPosee = $partie->questionsPosees()
+            ->with('question')
+            ->find($donnees['question_posee_id']);
+
+        if (!$questionPosee) {
+            return response()->json([
+                'message' => 'Cette question n’appartient pas à la partie.',
+            ], 404);
+        }
+
+        if ($questionPosee->est_correcte !== null) {
+            return response()->json([
+                'message' => 'Cette question a déjà été répondue.',
+            ], 422);
+        }
+
+        $reponseDonnee = trim($donnees['reponse']);
+
+        $estCorrecte = $reponseDonnee ===
+            trim($questionPosee->question->reponse_correcte);
+
+        $questionPosee->update([
+            'reponse_donnee' => $reponseDonnee,
+            'est_correcte' => $estCorrecte,
+        ]);
+
+        if ($estCorrecte) {
+            $partie->bonnes_reponses_niveau++;
+            $partie->questions_correctes_total++;
+            $partie->score_total += 1000;
+        } else {
+            $partie->erreurs_niveau++;
+        }
+
+        $partie->save();
+
+        return response()->json([
+            'message' => $estCorrecte
+                ? 'Bonne réponse.'
+                : 'Mauvaise réponse.',
+            'est_correcte' => $estCorrecte,
+            'reponse_correcte' => $questionPosee->question->reponse_correcte,
+            'points_gagnes' => $estCorrecte ? 1000 : 0,
+            'bonnes_reponses_niveau' => $partie->bonnes_reponses_niveau,
+            'erreurs_niveau' => $partie->erreurs_niveau,
+            'score_total' => $partie->score_total,
+        ]);
+    }
 }

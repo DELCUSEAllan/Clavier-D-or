@@ -42,3 +42,8 @@ Route::get('/progression', [
     ProgressionController::class,
     'afficher',
 ])->middleware('auth:sanctum');
+
+Route::post(
+    '/parties/{partie}/repondre',
+    [PartieController::class, 'repondre']
+)->middleware('auth:sanctum');
