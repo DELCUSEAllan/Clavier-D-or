@@ -446,4 +446,67 @@ class PartieController extends Controller
             'est_boss' => $estBoss,
         ]);
     }
+    public function utiliserJoker(Request $request, Partie $partie): JsonResponse
+    {
+        if ($partie->utilisateur_id !== $request->user()->id) {
+            return response()->json([
+                'message' => 'Vous ne pouvez pas accéder à cette partie.',
+            ], 403);
+        }
+
+        if ($partie->statut !== 'en_cours') {
+            return response()->json([
+                'message' => 'Cette partie n’est plus en cours.',
+            ], 422);
+        }
+
+        if ($partie->role !== 'mobile') {
+            return response()->json([
+                'message' => 'Cette partie ne possède pas le joker mobile.',
+            ], 422);
+        }
+
+        $questionPosee = $partie->questionsPosees()
+            ->whereNull('est_correcte')
+            ->with('question')
+            ->orderBy('ordre')
+            ->first();
+
+        if (!$questionPosee) {
+            return response()->json([
+                'message' => 'Il n’y a plus de question en attente.',
+            ], 422);
+        }
+
+        if ($questionPosee->joker_utilise) {
+            return response()->json([
+                'message' => 'Un joker a déjà été utilisé sur cette question.',
+            ], 422);
+        }
+
+        if ($partie->jokers_restants <= 0) {
+            return response()->json([
+                'message' => 'Vous n’avez plus de joker disponible.',
+            ], 422);
+        }
+
+        $bonneReponse = trim($questionPosee->question->reponse_correcte);
+
+        $premiereLettre = mb_strtoupper(
+            mb_substr($bonneReponse, 0, 1)
+        );
+
+        $questionPosee->update([
+            'joker_utilise' => true,
+        ]);
+
+        $partie->decrement('jokers_restants');
+        $partie->refresh();
+
+        return response()->json([
+            'message' => 'Le joker mobile a été utilisé.',
+            'premiere_lettre' => $premiereLettre,
+            'jokers_restants' => $partie->jokers_restants,
+        ]);
+    }
 }
