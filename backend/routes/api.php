@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthentificationController;
 use App\Http\Controllers\PartieController;
+use App\Http\Controllers\ProgressionController;
 
 use Illuminate\Http\Request;
 
@@ -36,3 +37,8 @@ Route::get(
     PartieController::class,
     'questionSuivante'])
     ->middleware('auth:sanctum');
+
+Route::get('/progression', [
+    ProgressionController::class,
+    'afficher',
+])->middleware('auth:sanctum');
