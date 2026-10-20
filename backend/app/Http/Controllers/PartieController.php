@@ -12,123 +12,160 @@ use App\Models\Partie;
 class PartieController extends Controller
 {
     public function demarrer(Request $request): JsonResponse
-{
-    $donnees = $request->validate([
-        'role' => [
-            'required',
-            'string',
-            'in:front,back,mobile',
-        ],
-    ]);
+    {
+        $donnees = $request->validate([
+            'role' => [
+                'required',
+                'string',
+                'in:front,back,mobile',
+            ],
 
-    $theme = Theme::where('numero_niveau', 1)->first();
-
-    if (!$theme) {
-        return response()->json([
-            'message' => 'Le thème du niveau 1 est introuvable.',
-        ], 422);
-    }
-
-    $repartition = [
-        'Facile' => 2,
-        'Moyenne' => 2,
-        'Difficile' => 2,
-        'Extreme' => 1,
-    ];
-
-    $questions = collect();
-
-    foreach ($repartition as $difficulte => $nombre) {
-        $selection = Question::where('theme_id', $theme->id)
-            ->where('difficulte', $difficulte)
-            ->inRandomOrder()
-            ->limit($nombre)
-            ->get();
-
-        $questions = $questions->concat($selection);
-    }
-
-    if ($questions->count() !== 7) {
-        return response()->json([
-            'message' => 'Il n’y a pas assez de questions pour démarrer le niveau.',
-        ], 422);
-    }
-
-    $partie = $request->user()->parties()->create([
-        'role' => $donnees['role'],
-        'niveau_actuel' => 1,
-        'erreurs_niveau' => 0,
-        'bonnes_reponses_niveau' => 0,
-        'jokers_restants' => 1,
-        'score_total' => 0,
-        'questions_correctes_total' => 0,
-        'statut' => 'en_cours',
-    ]);
-
-    foreach ($questions->values() as $index => $question) {
-        $partie->questionsPosees()->create([
-            'question_id' => $question->id,
-            'ordre' => $index + 1,
+            'numero_niveau' => [
+                'required',
+                'integer',
+                'between:1,6',
+            ],
         ]);
-    }
 
-    return response()->json([
-        'message' => 'Partie démarrée.',
-        'partie' => $partie,
-        'theme' => $theme->nom,
-        'nombre_questions' => $questions->count(),
-    ], 201);
-    }
+        $numeroNiveau = (int)$donnees['numero_niveau'];
+        $theme = Theme::where('numero_niveau', $numeroNiveau)->first();
 
+        if (!$theme) {
+            return response()->json([
+                'message' => 'Le thème demandé est introuvable.',
+            ], 422);
+        }
 
-    public function questionSuivante(Request $request,Partie $partie): JsonResponse {
-    if ($partie->utilisateur_id !== $request->user()->id) {
-        return response()->json([
-            'message' => 'Vous ne pouvez pas accéder à cette partie.',
-        ], 403);
-    }
+        $progression = $request->user()
+            ->progressionsNiveaux()
+            ->where('theme_id', $theme->id)
+            ->first();
 
-    if ($partie->statut !== 'en_cours') {
-        return response()->json([
-            'message' => 'Cette partie n’est plus en cours.',
-        ], 422);
-    }
+        if (!$progression || !$progression->est_deverrouille) {
+            return response()->json([
+                'message' => 'Ce niveau est encore verrouillé.',
+            ], 403);
+        }
 
-    $questionPosee = $partie->questionsPosees()
-        ->whereNull('est_correcte')
-        ->with('question')
-        ->orderBy('ordre')
-        ->first();
+        $estBoss = $numeroNiveau === 6;
+        $scoreMaximal = $estBoss ? 20000 : 7000;
 
-    if (!$questionPosee) {
-        return response()->json([
-            'message' => 'Toutes les questions de cette tentative ont été répondues.',
-            'terminee' => true,
+        if ($progression->meilleur_score >= $scoreMaximal) {
+            return response()->json([
+                'message' => 'Tu as déjà obtenu le score maximal à ce niveau.',
+            ], 403);
+        }
+
+        $repartition = $estBoss
+            ? [
+                'Facile' => 5,
+                'Moyenne' => 5,
+                'Difficile' => 5,
+                'Extreme' => 5,
+            ]
+            : [
+                'Facile' => 2,
+                'Moyenne' => 2,
+                'Difficile' => 2,
+                'Extreme' => 1,
+            ];
+
+        $questions = collect();
+
+        foreach ($repartition as $difficulte => $nombre) {
+            $selection = Question::where('theme_id', $theme->id)
+                ->where('difficulte', $difficulte)
+                ->inRandomOrder()
+                ->limit($nombre)
+                ->get();
+
+            $questions = $questions->concat($selection);
+        }
+
+        $nombreQuestionsAttendu = array_sum($repartition);
+        if ($questions->count() !== $nombreQuestionsAttendu) {
+            return response()->json([
+                'message' => 'Il n’y a pas assez de questions pour démarrer le niveau.',
+            ], 422);
+        }
+
+        $partie = $request->user()->parties()->create([
+            'role' => $donnees['role'],
+            'niveau_actuel' => $numeroNiveau,
+            'erreurs_niveau' => 0,
+            'bonnes_reponses_niveau' => 0,
+            'jokers_restants' => $estBoss ? 3 : 1,
+            'score_total' => 0,
+            'questions_correctes_total' => 0,
+            'statut' => 'en_cours',
         ]);
+
+        foreach ($questions->values() as $index => $question) {
+            $partie->questionsPosees()->create([
+                'question_id' => $question->id,
+                'ordre' => $index + 1,
+            ]);
+        }
+
+        return response()->json([
+            'message' => 'Partie démarrée.',
+            'partie' => $partie,
+            'theme' => $theme->nom,
+            'nombre_questions' => $questions->count(),
+            'est_boss' => $estBoss,
+        ], 201);
     }
 
-    $question = $questionPosee->question;
 
-    $propositions = collect([
-        $question->reponse_correcte,
-        $question->reponse_fausse_1,
-        $question->reponse_fausse_2,
-        $question->reponse_fausse_3,
-    ])
-        ->filter(fn ($reponse) => $reponse !== null)
-        ->shuffle()
-        ->values();
+    public function questionSuivante(Request $request, Partie $partie): JsonResponse
+    {
+        if ($partie->utilisateur_id !== $request->user()->id) {
+            return response()->json([
+                'message' => 'Vous ne pouvez pas accéder à cette partie.',
+            ], 403);
+        }
 
-    return response()->json([
-        'terminee' => false,
+        if ($partie->statut !== 'en_cours') {
+            return response()->json([
+                'message' => 'Cette partie n’est plus en cours.',
+            ], 422);
+        }
 
-        'question' => [
-            'question_posee_id' => $questionPosee->id,
-            'ordre' => $questionPosee->ordre,
-            'intitule' => $question->intitule,
-            'type_question' => $question->type_question,
-            'difficulte' => $question->difficulte,
-            'propositions' => $propositions,
+        $questionPosee = $partie->questionsPosees()
+            ->whereNull('est_correcte')
+            ->with('question')
+            ->orderBy('ordre')
+            ->first();
+
+        if (!$questionPosee) {
+            return response()->json([
+                'message' => 'Toutes les questions de cette tentative ont été répondues.',
+                'terminee' => true,
+            ]);
+        }
+
+        $question = $questionPosee->question;
+
+        $propositions = collect([
+            $question->reponse_correcte,
+            $question->reponse_fausse_1,
+            $question->reponse_fausse_2,
+            $question->reponse_fausse_3,
+        ])
+            ->filter(fn($reponse) => $reponse !== null)
+            ->shuffle()
+            ->values();
+
+        return response()->json([
+            'terminee' => false,
+
+            'question' => [
+                'question_posee_id' => $questionPosee->id,
+                'ordre' => $questionPosee->ordre,
+                'intitule' => $question->intitule,
+                'type_question' => $question->type_question,
+                'difficulte' => $question->difficulte,
+                'propositions' => $propositions,
             ],
         ]);
     }
