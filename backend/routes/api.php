@@ -47,3 +47,8 @@ Route::post(
     '/parties/{partie}/repondre',
     [PartieController::class, 'repondre']
 )->middleware('auth:sanctum');
+
+Route::post(
+    '/parties/{partie}/continuer',
+    [PartieController::class, 'continuer']
+)->middleware('auth:sanctum');
