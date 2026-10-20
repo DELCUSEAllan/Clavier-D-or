@@ -231,16 +231,37 @@ class PartieController extends Controller
 
         $partie->save();
 
+        $estBoss = $partie->niveau_actuel === 6;
+        $limiteErreurs = $estBoss ? 6 : 3;
+
+        $partieTerminee = $partie->erreurs_niveau >= $limiteErreurs;
+
+        if ($partieTerminee) {
+            $partie->statut = 'perdue';
+            $partie->date_fin = now();
+            $partie->save();
+        }
+
+        $message = $estCorrecte
+            ? 'Bonne réponse.'
+            : 'Mauvaise réponse.';
+
+        if ($partieTerminee) {
+            $message = $estBoss
+                ? 'Le boss t’a vaincu. Retente ta chance plus tard.'
+                : 'Niveau échoué. Retente ta chance plus tard.';
+        }
+
         return response()->json([
-            'message' => $estCorrecte
-                ? 'Bonne réponse.'
-                : 'Mauvaise réponse.',
+            'message' => $message,
             'est_correcte' => $estCorrecte,
             'reponse_correcte' => $questionPosee->question->reponse_correcte,
             'points_gagnes' => $estCorrecte ? 1000 : 0,
             'bonnes_reponses_niveau' => $partie->bonnes_reponses_niveau,
             'erreurs_niveau' => $partie->erreurs_niveau,
             'score_total' => $partie->score_total,
+            'partie_terminee' => $partieTerminee,
+            'statut_partie' => $partie->statut,
         ]);
     }
 }
