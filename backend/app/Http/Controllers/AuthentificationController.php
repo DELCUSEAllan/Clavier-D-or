@@ -3,9 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Utilisateur;
+use App\Models\Theme;
+
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+
 
 class AuthentificationController extends Controller
 {
@@ -35,6 +38,16 @@ class AuthentificationController extends Controller
         ]);
 
         $utilisateur = Utilisateur::create($donnees);
+
+        $themes = Theme::orderBy('numero_niveau')->get();
+
+        foreach ($themes as $theme) {
+            $utilisateur->progressionsNiveaux()->create([
+                'theme_id' => $theme->id,
+                'meilleur_score' => 0,
+                'est_deverrouille' => $theme->numero_niveau === 1,
+            ]);
+        }
 
         $jeton = $utilisateur
             ->createToken('jeton-authentification')
