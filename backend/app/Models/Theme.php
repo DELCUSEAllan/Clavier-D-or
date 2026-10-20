@@ -16,4 +16,8 @@ class Theme extends Model
     {
         return $this->hasMany(Question::class);
     }
+    public function progressionsNiveaux(): HasMany
+    {
+        return $this->hasMany(ProgressionNiveau::class);
+    }
 }
