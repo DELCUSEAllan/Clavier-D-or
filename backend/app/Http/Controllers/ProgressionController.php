@@ -25,7 +25,21 @@ class ProgressionController extends Controller
                 'reussi_le' => $progression->reussi_le,
             ]);
 
+        $scoreGlobal = (int) $progressions->sum('meilleur_score');
+
+        $tropheePlatine = $progressions->count() === 6
+            && $progressions->every(function (array $progression): bool {
+                $scoreMaximal = $progression['numero_niveau'] === 6
+                    ? 20000
+                    : 7000;
+
+                return $progression['meilleur_score'] >= $scoreMaximal;
+            });
+
         return response()->json([
+            'score_global' => $scoreGlobal,
+            'score_maximal' => 55000,
+            'trophee_platine' => $tropheePlatine,
             'progression' => $progressions,
         ]);
     }

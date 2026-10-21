@@ -163,6 +163,8 @@ class QuestionController extends Controller
         $meilleurScoreNiveau = null;
         $scoreNiveau = $partie->bonnes_reponses_niveau * 1000;
 
+        $scoreGlobal = (int) $partie->utilisateur->meilleur_score;
+
         if ($niveauTermine) {
             $niveauReussi = !$defaiteImmediate
                 && $partie->bonnes_reponses_niveau >= $seuilReussite;
@@ -186,6 +188,13 @@ class QuestionController extends Controller
                 if ($niveauReussi && $progression->reussi_le === null) {
                     $progression->reussi_le = now();
                 }
+
+                $scoreGlobal = (int) $partie->utilisateur
+                    ->progressionsNiveaux()
+                    ->sum('meilleur_score');
+
+                $partie->utilisateur->meilleur_score = $scoreGlobal;
+                $partie->utilisateur->save();
 
                 $progression->save();
                 $meilleurScoreNiveau = $progression->meilleur_score;
@@ -246,6 +255,7 @@ class QuestionController extends Controller
             'bonnes_reponses_niveau' => $partie->bonnes_reponses_niveau,
             'erreurs_niveau' => $partie->erreurs_niveau,
             'score_total' => $partie->score_total,
+            'score_global' => $scoreGlobal,
             'niveau_termine' => $niveauTermine,
             'niveau_reussi' => $niveauReussi,
             'mention' => $mention,
