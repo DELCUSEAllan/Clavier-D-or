@@ -218,6 +218,29 @@ class PartieController extends Controller
         $estCorrecte = $reponseDonnee ===
             trim($questionPosee->question->reponse_correcte);
 
+        $premiereErreurProtegee = !$estCorrecte
+            && $partie->role === 'back'
+            && $questionPosee->joker_utilise
+            && !$questionPosee->rattrapage_utilise;
+
+        if ($premiereErreurProtegee) {
+            $questionPosee->update([
+                'reponse_donnee' => $reponseDonnee,
+                'rattrapage_utilise' => true,
+            ]);
+
+            return response()->json([
+                'message' => 'Mauvaise réponse, mais le joker back vous accorde une seconde tentative.',
+                'est_correcte' => false,
+                'rattrapage_autorise' => true,
+                'question_posee_id' => $questionPosee->id,
+                'points_gagnes' => 0,
+                'erreurs_niveau' => $partie->erreurs_niveau,
+                'score_total' => $partie->score_total,
+                'statut_partie' => $partie->statut,
+            ]);
+        }
+
         $questionPosee->update([
             'reponse_donnee' => $reponseDonnee,
             'est_correcte' => $estCorrecte,
@@ -461,7 +484,7 @@ class PartieController extends Controller
             ], 422);
         }
 
-        if (!in_array($partie->role, ['mobile', 'front'], true)) {
+        if (!in_array($partie->role, ['mobile', 'front', 'back'], true)) {
             return response()->json([
                 'message' => 'Le joker de cette partie n’est pas encore disponible.',
             ], 422);
@@ -489,6 +512,21 @@ class PartieController extends Controller
             return response()->json([
                 'message' => 'Vous n’avez plus de joker disponible.',
             ], 422);
+        }
+
+        if ($partie->role === 'back') {
+            $questionPosee->update([
+                'joker_utilise' => true,
+            ]);
+
+            $partie->decrement('jokers_restants');
+            $partie->refresh();
+
+            return response()->json([
+                'message' => 'Le joker back est activé pour cette question.',
+                'protection_active' => true,
+                'jokers_restants' => $partie->jokers_restants,
+            ]);
         }
 
         if ($partie->role === 'front') {

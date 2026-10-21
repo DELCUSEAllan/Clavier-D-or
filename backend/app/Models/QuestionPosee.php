@@ -17,6 +17,7 @@ class QuestionPosee extends Model
         'est_correcte',
         'joker_utilise',
         'est_remplacee_par_joker',
+        'rattrapage_utilise',
     ];
 
     protected function casts(): array
@@ -25,6 +26,7 @@ class QuestionPosee extends Model
             'est_correcte' => 'boolean',
             'joker_utilise' => 'boolean',
             'est_remplacee_par_joker' => 'boolean',
+            'rattrapage_utilise' => 'boolean',
         ];
     }
 
