@@ -4,6 +4,7 @@ use App\Http\Controllers\AuthentificationController;
 use App\Http\Controllers\PartieController;
 use App\Http\Controllers\ProgressionController;
 use App\Http\Controllers\QuestionController;
+use App\Http\Controllers\JokerController;
 
 use Illuminate\Http\Request;
 
@@ -55,6 +56,6 @@ Route::post(
 )->middleware('auth:sanctum');
 
 Route::post('/parties/{partie}/joker', [
-    PartieController::class,
+    JokerController::class,
     'utiliserJoker',
 ])->middleware('auth:sanctum');
