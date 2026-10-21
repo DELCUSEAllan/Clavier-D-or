@@ -3,15 +3,19 @@
 namespace App\Http\Controllers;
 
 use App\Models\Partie;
-use App\Models\Question;
 use App\Models\Theme;
-
+use App\Services\SelectionQuestionsService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 
 class PartieController extends Controller
 {
+    public function __construct(
+        private readonly SelectionQuestionsService $selectionQuestionsService
+    ) {
+    }
+
     public function demarrer(Request $request): JsonResponse
     {
         $donnees = $request->validate([
@@ -57,33 +61,10 @@ class PartieController extends Controller
             ], 403);
         }
 
-        $repartition = $estBoss
-            ? [
-                'Facile' => 5,
-                'Moyenne' => 5,
-                'Difficile' => 5,
-                'Extreme' => 5,
-            ]
-            : [
-                'Facile' => 2,
-                'Moyenne' => 2,
-                'Difficile' => 2,
-                'Extreme' => 1,
-            ];
+        $questions = $this->selectionQuestionsService->selectionner($theme, $estBoss);
 
-        $questions = collect();
+        $nombreQuestionsAttendu = $this->selectionQuestionsService->nombreAttendu($estBoss);
 
-        foreach ($repartition as $difficulte => $nombre) {
-            $selection = Question::where('theme_id', $theme->id)
-                ->where('difficulte', $difficulte)
-                ->inRandomOrder()
-                ->limit($nombre)
-                ->get();
-
-            $questions = $questions->concat($selection);
-        }
-
-        $nombreQuestionsAttendu = array_sum($repartition);
         if ($questions->count() !== $nombreQuestionsAttendu) {
             return response()->json([
                 'message' => 'Il n’y a pas assez de questions pour démarrer le niveau.',
