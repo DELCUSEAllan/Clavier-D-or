@@ -59,3 +59,8 @@ Route::post('/parties/{partie}/joker', [
     JokerController::class,
     'utiliserJoker',
 ])->middleware('auth:sanctum');
+
+Route::get('/parties/actuelle', [
+    PartieController::class,
+    'actuelle',
+])->middleware('auth:sanctum');

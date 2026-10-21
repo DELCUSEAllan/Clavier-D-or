@@ -32,6 +32,22 @@ class PartieController extends Controller
             ],
         ]);
 
+        $partieActive = $request->user()
+            ->parties()
+            ->whereIn('statut', ['en_cours', 'niveau_reussi'])
+            ->latest('id')
+            ->first();
+
+        if ($partieActive) {
+            return response()->json([
+                'message' => 'Une partie est déjà en cours.',
+                'partie' => $partieActive,
+                'action_attendue' => $partieActive->statut === 'niveau_reussi'
+                    ? 'continuer'
+                    : 'reprendre',
+            ], 409);
+        }
+
         $numeroNiveau = (int)$donnees['numero_niveau'];
         $theme = Theme::where('numero_niveau', $numeroNiveau)->first();
 
@@ -202,6 +218,34 @@ class PartieController extends Controller
             'theme' => $theme->nom,
             'nombre_questions' => $questions->count(),
             'est_boss' => $estBoss,
+        ]);
+    }
+    public function actuelle(Request $request): JsonResponse
+    {
+        $partie = $request->user()
+            ->parties()
+            ->whereIn('statut', ['en_cours', 'niveau_reussi'])
+            ->latest('id')
+            ->first();
+
+        if (!$partie) {
+            return response()->json([
+                'message' => 'Aucune partie en cours.',
+                'partie' => null,
+            ]);
+        }
+
+        $theme = Theme::where(
+            'numero_niveau',
+            $partie->niveau_actuel
+        )->first();
+
+        return response()->json([
+            'partie' => $partie,
+            'theme' => $theme?->nom,
+            'action_attendue' => $partie->statut === 'niveau_reussi'
+                ? 'continuer'
+                : 'reprendre',
         ]);
     }
 }
