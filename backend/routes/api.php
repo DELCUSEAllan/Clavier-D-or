@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthentificationController;
 use App\Http\Controllers\PartieController;
 use App\Http\Controllers\ProgressionController;
+use App\Http\Controllers\QuestionController;
 
 use Illuminate\Http\Request;
 
@@ -34,7 +35,7 @@ Route::post('/parties/demarrer', [
 
 Route::get(
     '/parties/{partie}/question-suivante',[
-    PartieController::class,
+    QuestionController::class,
     'questionSuivante'])
     ->middleware('auth:sanctum');
 
@@ -45,7 +46,7 @@ Route::get('/progression', [
 
 Route::post(
     '/parties/{partie}/repondre',
-    [PartieController::class, 'repondre']
+    [QuestionController::class, 'repondre']
 )->middleware('auth:sanctum');
 
 Route::post(
