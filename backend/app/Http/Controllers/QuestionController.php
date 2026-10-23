@@ -189,15 +189,16 @@ class QuestionController extends Controller
                     $progression->reussi_le = now();
                 }
 
+                $progression->save();
+
+                $meilleurScoreNiveau = $progression->meilleur_score;
+
                 $scoreGlobal = (int) $partie->utilisateur
                     ->progressionsNiveaux()
                     ->sum('meilleur_score');
 
                 $partie->utilisateur->meilleur_score = $scoreGlobal;
                 $partie->utilisateur->save();
-
-                $progression->save();
-                $meilleurScoreNiveau = $progression->meilleur_score;
             }
 
             if (!$niveauReussi) {
