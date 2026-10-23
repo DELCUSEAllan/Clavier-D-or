@@ -6,6 +6,7 @@ use App\Http\Controllers\ProgressionController;
 use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\JokerController;
 use App\Http\Controllers\HistoriqueController;
+use App\Http\Controllers\BilanPdfController;
 
 use Illuminate\Http\Request;
 
@@ -69,4 +70,9 @@ Route::get('/parties/actuelle', [
 Route::get('/historique', [
     HistoriqueController::class,
     'afficher',
+])->middleware('auth:sanctum');
+
+Route::get('/bilan/pdf', [
+    BilanPdfController::class,
+    'telecharger',
 ])->middleware('auth:sanctum');
