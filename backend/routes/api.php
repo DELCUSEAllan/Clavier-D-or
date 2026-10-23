@@ -5,6 +5,7 @@ use App\Http\Controllers\PartieController;
 use App\Http\Controllers\ProgressionController;
 use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\JokerController;
+use App\Http\Controllers\HistoriqueController;
 
 use Illuminate\Http\Request;
 
@@ -63,4 +64,9 @@ Route::post('/parties/{partie}/joker', [
 Route::get('/parties/actuelle', [
     PartieController::class,
     'actuelle',
+])->middleware('auth:sanctum');
+
+Route::get('/historique', [
+    HistoriqueController::class,
+    'afficher',
 ])->middleware('auth:sanctum');
