@@ -160,33 +160,11 @@ class PartieController extends Controller
 
         $estBoss = $numeroNiveauSuivant === 6;
 
-        $repartition = $estBoss
-            ? [
-                'Facile' => 5,
-                'Moyenne' => 5,
-                'Difficile' => 5,
-                'Extreme' => 5,
-            ]
-            : [
-                'Facile' => 2,
-                'Moyenne' => 2,
-                'Difficile' => 2,
-                'Extreme' => 1,
-            ];
+        $questions = $this->selectionQuestionsService
+            ->selectionner($theme, $estBoss);
 
-        $questions = collect();
-
-        foreach ($repartition as $difficulte => $nombre) {
-            $selection = Question::where('theme_id', $theme->id)
-                ->where('difficulte', $difficulte)
-                ->inRandomOrder()
-                ->limit($nombre)
-                ->get();
-
-            $questions = $questions->concat($selection);
-        }
-
-        $nombreQuestionsAttendu = array_sum($repartition);
+        $nombreQuestionsAttendu = $this->selectionQuestionsService
+            ->nombreAttendu($estBoss);
 
         if ($questions->count() !== $nombreQuestionsAttendu) {
             return response()->json([
