@@ -4,7 +4,6 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
@@ -31,6 +30,7 @@ class Utilisateur extends Authenticatable
         return [
             'email_verifie_le' => 'datetime',
             'mot_de_passe' => 'hashed',
+            'est_admin' => 'boolean',
         ];
     }
 

@@ -7,6 +7,7 @@ use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\JokerController;
 use App\Http\Controllers\HistoriqueController;
 use App\Http\Controllers\BilanPdfController;
+use App\Http\Controllers\Admin\TableauDeBordController;
 
 use Illuminate\Http\Request;
 
@@ -76,3 +77,13 @@ Route::get('/bilan/pdf', [
     BilanPdfController::class,
     'telecharger',
 ])->middleware('auth:sanctum');
+
+Route::middleware([
+    'auth:sanctum',
+    'admin',
+])->prefix('admin')->group(function () {
+    Route::get('/tableau-de-bord', [
+        TableauDeBordController::class,
+        'afficher',
+    ]);
+});
