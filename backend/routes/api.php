@@ -58,6 +58,11 @@ Route::post(
     [PartieController::class, 'continuer']
 )->middleware('auth:sanctum');
 
+Route::patch(
+    '/parties/{partie}/abandonner',
+    [PartieController::class, 'abandonner']
+)->middleware('auth:sanctum');
+
 Route::post('/parties/{partie}/joker', [
     JokerController::class,
     'utiliserJoker',

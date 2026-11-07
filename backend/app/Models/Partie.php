@@ -21,6 +21,10 @@ class Partie extends Model
         'date_fin',
     ];
 
+    protected $hidden = [
+        'verrou_partie_active',
+    ];
+
     protected function casts(): array
     {
         return [
