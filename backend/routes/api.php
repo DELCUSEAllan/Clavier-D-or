@@ -9,6 +9,8 @@ use App\Http\Controllers\JokerController;
 use App\Http\Controllers\PartieController;
 use App\Http\Controllers\ProgressionController;
 use App\Http\Controllers\QuestionController;
+use App\Http\Controllers\Admin\QuestionController as AdminQuestionController;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -94,5 +96,25 @@ Route::middleware([
     Route::get('/utilisateurs', [
         UtilisateurController::class,
         'afficher',
+    ]);
+
+    Route::get('/questions', [
+        AdminQuestionController::class,
+        'afficher',
+    ]);
+
+    Route::post('/questions', [
+        AdminQuestionController::class,
+        'creer',
+    ]);
+
+    Route::put('/questions/{question}', [
+        AdminQuestionController::class,
+        'modifier',
+    ]);
+
+    Route::delete('/questions/{question}', [
+        AdminQuestionController::class,
+        'supprimer',
     ]);
 });
