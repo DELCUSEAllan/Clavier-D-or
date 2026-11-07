@@ -1,16 +1,15 @@
 <?php
 
+use App\Http\Controllers\Admin\TableauDeBordController;
+use App\Http\Controllers\Admin\UtilisateurController;
 use App\Http\Controllers\AuthentificationController;
+use App\Http\Controllers\BilanPdfController;
+use App\Http\Controllers\HistoriqueController;
+use App\Http\Controllers\JokerController;
 use App\Http\Controllers\PartieController;
 use App\Http\Controllers\ProgressionController;
 use App\Http\Controllers\QuestionController;
-use App\Http\Controllers\JokerController;
-use App\Http\Controllers\HistoriqueController;
-use App\Http\Controllers\BilanPdfController;
-use App\Http\Controllers\Admin\TableauDeBordController;
-
 use Illuminate\Http\Request;
-
 use Illuminate\Support\Facades\Route;
 
 
@@ -89,6 +88,11 @@ Route::middleware([
 ])->prefix('admin')->group(function () {
     Route::get('/tableau-de-bord', [
         TableauDeBordController::class,
+        'afficher',
+    ]);
+
+    Route::get('/utilisateurs', [
+        UtilisateurController::class,
         'afficher',
     ]);
 });
