@@ -2,16 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Utilisateur;
 use App\Models\Theme;
-
+use App\Models\Utilisateur;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
+use Laravel\Sanctum\PersonalAccessToken;
 
 
 class AuthentificationController extends Controller
 {
+    private const DUREE_ACCES_MINUTES = 15;
+    private const DUREE_ACTUALISATION_JOURS = 30;
+
     public function inscription(Request $request): JsonResponse
     {
         $donnees = $request->validate([
@@ -49,14 +54,12 @@ class AuthentificationController extends Controller
             ]);
         }
 
-        $jeton = $utilisateur
-            ->createToken('jeton-authentification')
-            ->plainTextToken;
+        $jetons = $this->creerPaireJetons($utilisateur);
 
         return response()->json([
             'message' => 'Inscription réussie.',
             'utilisateur' => $utilisateur,
-            'jeton' => $jeton,
+            'authentification' => $jetons,
         ], 201);
     }
 
@@ -84,26 +87,106 @@ class AuthentificationController extends Controller
             ], 422);
         }
 
-        $jeton = $utilisateur
-            ->createToken('jeton-authentification')
-            ->plainTextToken;
+        $jetons = $this->creerPaireJetons($utilisateur);
 
         return response()->json([
             'message' => 'Connexion réussie.',
             'utilisateur' => $utilisateur,
-            'jeton' => $jeton,
+            'authentification' => $jetons,
         ]);
     }
 
-        public function deconnexion(Request $request): JsonResponse
+    public function rafraichir(Request $request): JsonResponse
     {
-        $request->user()
-            ->currentAccessToken()
-            ->delete();
+        $utilisateur = $request->user();
+        $jetonActuel = $utilisateur->currentAccessToken();
+
+        $estJetonActualisation = $jetonActuel instanceof PersonalAccessToken && str_starts_with($jetonActuel->name, 'refresh:') && in_array(
+                'refresh',
+                $jetonActuel->abilities ?? [],
+                true
+            );
+
+        if (!$estJetonActualisation) {
+            return response()->json([
+                'message' => 'Jeton d’actualisation invalide.',
+            ], 403);
+        }
+
+        $identifiantSession = Str::after($jetonActuel->name, 'refresh:');
+
+        $jetons = $this->creerPaireJetons($utilisateur, $identifiantSession, true);
+
+        return response()->json([
+            'message' => 'Jetons actualisés.',
+            'authentification' => $jetons,
+        ]);
+    }
+
+    public function deconnexion(Request $request): JsonResponse
+    {
+        $utilisateur = $request->user();
+        $jetonActuel = $utilisateur->currentAccessToken();
+
+        if ($jetonActuel instanceof PersonalAccessToken) {
+            if (str_contains($jetonActuel->name, ':')) {
+                $identifiantSession = Str::after(
+                    $jetonActuel->name,
+                    ':'
+                );
+
+                $utilisateur->tokens()
+                    ->whereIn('name', [
+                        "access:$identifiantSession",
+                        "refresh:$identifiantSession",
+                    ])
+                    ->delete();
+            } else {
+                $jetonActuel->delete();
+            }
+        }
 
         return response()->json([
             'message' => 'Déconnexion réussie.',
         ]);
+    }
+
+    private function creerPaireJetons(Utilisateur $utilisateur, ?string $identifiantSession = null, bool $remplacer = false): array
+    {
+        return DB::transaction(function () use ($utilisateur, $identifiantSession, $remplacer): array {
+            $identifiantSession ??= (string)Str::uuid();
+
+            if ($remplacer) {
+                $utilisateur->tokens()
+                    ->whereIn('name', [
+                        "access:$identifiantSession",
+                        "refresh:$identifiantSession",
+                    ])
+                    ->delete();
+            }
+
+            $expirationAcces = now()->addMinutes(self::DUREE_ACCES_MINUTES);
+
+            $expirationActualisation = now()->addDays(self::DUREE_ACTUALISATION_JOURS);
+
+            $jetonAcces = $utilisateur->createToken(
+                "access:$identifiantSession",
+                ['access'],
+                $expirationAcces)->plainTextToken;
+
+            $jetonActualisation = $utilisateur->createToken(
+                "refresh:$identifiantSession",
+                ['refresh'],
+                $expirationActualisation)->plainTextToken;
+
+            return [
+                'type' => 'Bearer',
+                'jeton_acces' => $jetonAcces,
+                'jeton_actualisation' => $jetonActualisation,
+                'expiration_acces' => $expirationAcces->toIso8601String(),
+                'expiration_actualisation' => $expirationActualisation->toIso8601String(),
+            ];
+        });
     }
 }
 
