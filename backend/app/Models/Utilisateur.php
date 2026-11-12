@@ -17,7 +17,10 @@ class Utilisateur extends Authenticatable
     protected $fillable = [
         'pseudo',
         'email',
+        'email_verifie_le',
         'mot_de_passe',
+        'meilleur_score',
+        'est_admin',
     ];
 
     protected $hidden = [

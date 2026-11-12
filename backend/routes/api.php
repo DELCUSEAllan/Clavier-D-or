@@ -19,12 +19,26 @@ Route::post('/inscription', [
     'inscription'])
     ->middleware('throttle:3,1');
 
-Route::get('/utilisateur', function (Request $request) {
-    return $request->user();
-})->middleware([
+Route::middleware([
     'auth:sanctum',
     'abilities:access',
-]);
+    'admin',
+])->prefix('admin')->group(function () {
+    Route::get('/utilisateurs', [
+        UtilisateurController::class,
+        'afficher',
+    ]);
+
+    Route::patch('/utilisateurs/{utilisateur}', [
+        UtilisateurController::class,
+        'modifier',
+    ]);
+
+    Route::delete('/utilisateurs/{utilisateur}', [
+        UtilisateurController::class,
+        'supprimer',
+    ]);
+});
 
 Route::post('/connexion', [
     AuthentificationController::class,'connexion',])
