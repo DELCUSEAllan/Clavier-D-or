@@ -4,12 +4,17 @@ namespace App\Http\Controllers;
 
 use App\Models\Theme;
 use App\Models\Utilisateur;
+
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Auth;
+
 use Laravel\Sanctum\PersonalAccessToken;
+
 
 
 class AuthentificationController extends Controller
@@ -93,6 +98,52 @@ class AuthentificationController extends Controller
             'message' => 'Connexion réussie.',
             'utilisateur' => $utilisateur,
             'authentification' => $jetons,
+        ]);
+    }
+    public function connexionWeb(Request $request): JsonResponse
+    {
+        $donnees = $request->validate([
+            'email' => [
+                'required',
+                'email',
+            ],
+            'mot_de_passe' => [
+                'required',
+                'string',
+            ],
+        ]);
+
+        $utilisateur = Utilisateur::where(
+            'email',
+            $donnees['email']
+        )->first();
+
+        if (!$utilisateur|| !Hash::check($donnees['mot_de_passe'],$utilisateur->mot_de_passe)
+        ) {
+            return response()->json([
+                'message' => 'Adresse email ou mot de passe incorrect.',
+            ], 422);
+        }
+
+        Auth::guard('web')->login($utilisateur);
+
+        $request->session()->regenerate();
+
+        return response()->json([
+            'message' => 'Connexion web réussie.',
+            'utilisateur' => $utilisateur,
+        ]);
+    }
+
+    public function deconnexionWeb(Request $request): JsonResponse
+    {
+        Auth::guard('web')->logout();
+
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        return response()->json([
+            'message' => 'Déconnexion web réussie.',
         ]);
     }
 
