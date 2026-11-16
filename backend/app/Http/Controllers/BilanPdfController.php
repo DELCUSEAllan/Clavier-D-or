@@ -17,8 +17,7 @@ class BilanPdfController extends Controller
             ->progressionsNiveaux()
             ->with('theme')
             ->get()
-            ->sortBy(fn($progression) => $progression->theme->numero_niveau
-            )
+            ->sortBy(fn($progression) => $progression->theme->numero_niveau)
             ->values();
 
         $scoreGlobal = (int) $request->user()->meilleur_score;
@@ -33,22 +32,56 @@ class BilanPdfController extends Controller
                 return $progression->meilleur_score >= $scoreMaximal;
             });
 
-        $parties = $utilisateur
+        $requeteParties = $utilisateur
             ->parties()
-            ->whereIn('statut', ['perdue', 'gagnee'])
-            ->orderByDesc('date_fin')
-            ->get();
+            ->whereIn('statut', ['perdue', 'gagnee']);
 
-        $themes = Theme::pluck('nom', 'numero_niveau');
+        $statistiquesParties = (clone $requeteParties)
+            ->selectRaw('COUNT(*) AS nombre_parties')
+            ->selectRaw("
+        COALESCE(
+            SUM(CASE WHEN statut = 'gagnee' THEN 1 ELSE 0 END),
+            0
+        ) AS victoires
+    ")
+            ->selectRaw("
+        COALESCE(
+            SUM(CASE WHEN statut = 'perdue' THEN 1 ELSE 0 END),
+            0
+        ) AS defaites
+    ")
+            ->selectRaw("
+        COALESCE(MAX(score_total), 0)
+        AS meilleur_score_partie
+    ")
+            ->first();
 
         $statistiques = [
-            'nombre_parties' => $parties->count(),
-            'victoires' => $parties->where('statut', 'gagnee')->count(),
-            'defaites' => $parties->where('statut', 'perdue')->count(),
-            'meilleur_score_partie' => (int)(
-                $parties->max('score_total') ?? 0
-            ),
+            'nombre_parties' => (int)$statistiquesParties->nombre_parties,
+            'victoires' => (int)$statistiquesParties->victoires,
+            'defaites' => (int)$statistiquesParties->defaites,
+            'meilleur_score_partie' => (int)$statistiquesParties->meilleur_score_partie,
         ];
+
+        $limiteHistorique = 50;
+
+        $parties = (clone $requeteParties)
+            ->select([
+                'id',
+                'role',
+                'niveau_actuel',
+                'score_total',
+                'statut',
+                'date_fin',
+            ])
+            ->orderByDesc('date_fin')
+            ->limit($limiteHistorique)
+            ->get();
+
+        $historiqueTronque =
+            $statistiques['nombre_parties'] > $parties->count();
+
+        $themes = Theme::pluck('nom', 'numero_niveau');
 
         $pdf = Pdf::loadView('pdf.bilan', [
             'utilisateur' => $utilisateur,
@@ -58,7 +91,10 @@ class BilanPdfController extends Controller
             'parties' => $parties,
             'themes' => $themes,
             'statistiques' => $statistiques,
+            'limiteHistorique' => $limiteHistorique,
+            'historiqueTronque' => $historiqueTronque,
             'dateGeneration' => now(),
+
         ])->setPaper('a4', 'portrait');
 
         $nomFichier = 'bilan-clavier-dor-'

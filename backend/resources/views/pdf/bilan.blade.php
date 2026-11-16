@@ -122,6 +122,14 @@
 
 <h2>Historique des parties</h2>
 
+@if ($historiqueTronque)
+    <div class="note-historique">
+        Seules les {{ $limiteHistorique }} parties les plus
+        récentes sont affichées. Les statistiques prennent en
+        compte toutes les parties terminées.
+    </div>
+@endif
+
 <table class="tableau">
     <thead>
     <tr>

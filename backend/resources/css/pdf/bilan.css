@@ -91,3 +91,12 @@ h2 {
     width: 110px;
     height: auto;
 }
+
+.note-historique {
+    margin: 8px 0;
+    padding: 7px 9px;
+    color: #665000;
+    background-color: #fff9df;
+    border-left: 3px solid #d8bd64;
+    font-size: 10px;
+}
