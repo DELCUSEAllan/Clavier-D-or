@@ -8,9 +8,14 @@ use App\Models\Theme;
 use App\Models\Utilisateur;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\DB;
+use App\Services\ScoreService;
 
 class ThemeController extends Controller
 {
+    public function __construct(
+        private readonly ScoreService $scoreService
+    ) {
+    }
     public function afficher(): JsonResponse
     {
         $themes = Theme::query()
@@ -26,8 +31,7 @@ class ThemeController extends Controller
         ]);
     }
 
-    public function creer(
-        EnregistrerThemeRequest $request): JsonResponse
+    public function creer(EnregistrerThemeRequest $request): JsonResponse
     {
         $donnees = $request->validated();
 
@@ -83,6 +87,9 @@ class ThemeController extends Controller
 
     public function supprimer(Theme $theme): JsonResponse
     {
+        $utilisateurIds = $theme->progressionsNiveaux()
+            ->pluck('utilisateur_id');
+
         $nombreQuestions = $theme->questions()
             ->withTrashed()
             ->count();
@@ -90,9 +97,19 @@ class ThemeController extends Controller
         $nombreProgressions = $theme->progressionsNiveaux()
             ->count();
 
-        DB::transaction(function () use ($theme): void {
-            $theme->delete();
-        });
+        DB::transaction(
+            function () use ($theme, $utilisateurIds): void {
+                $theme->delete();
+
+                Utilisateur::query()
+                    ->whereKey($utilisateurIds)
+                    ->lockForUpdate()
+                    ->each(function (Utilisateur $utilisateur): void {
+                        $this->scoreService
+                            ->synchroniserScoreGlobal($utilisateur);
+                    });
+            }
+        );
 
         return response()->json([
             'message' => 'Thème supprimé.',

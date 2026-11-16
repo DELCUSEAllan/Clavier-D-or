@@ -19,7 +19,6 @@ class Utilisateur extends Authenticatable
         'email',
         'email_verifie_le',
         'mot_de_passe',
-        'meilleur_score',
         'est_admin',
     ];
 

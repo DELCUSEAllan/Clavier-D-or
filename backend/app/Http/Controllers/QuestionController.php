@@ -7,9 +7,15 @@ use App\Models\Theme;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Services\ScoreService;
 
 class QuestionController extends Controller
 {
+    public function __construct(
+        private readonly ScoreService $scoreService
+    ) {
+    }
+
     public function questionSuivante(Request $request, Partie $partie): JsonResponse
     {
         if ($partie->utilisateur_id !== $request->user()->id) {
@@ -227,12 +233,8 @@ class QuestionController extends Controller
                     $meilleurScoreNiveau =
                         $progression->meilleur_score;
 
-                    $scoreGlobal = (int)$utilisateur
-                        ->progressionsNiveaux()
-                        ->sum('meilleur_score');
-
-                    $utilisateur->meilleur_score = $scoreGlobal;
-                    $utilisateur->save();
+                    $scoreGlobal = $this->scoreService
+                        ->synchroniserScoreGlobal($utilisateur);
                 }
 
                 if (!$niveauReussi) {

@@ -46,12 +46,7 @@ class ModifierUtilisateurRequest extends FormRequest
                 'date',
             ],
 
-            'meilleur_score' => [
-                'sometimes',
-                'integer',
-                'min:0',
-                'max:55000',
-            ],
+            'meilleur_score' => ['prohibited'],
 
             'est_admin' => [
                 'sometimes',

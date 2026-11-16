@@ -21,7 +21,7 @@ class BilanPdfController extends Controller
             )
             ->values();
 
-        $scoreGlobal = (int)$progressions->sum('meilleur_score');
+        $scoreGlobal = (int) $request->user()->meilleur_score;
 
         $tropheePlatine = $progressions->count() === 6
             && $progressions->every(function ($progression): bool {
