@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\QuestionController as AdminQuestionController;
 use App\Http\Controllers\Admin\TableauDeBordController;
+use App\Http\Controllers\Admin\ThemeController;
 use App\Http\Controllers\Admin\UtilisateurController;
 use App\Http\Controllers\AuthentificationController;
 use App\Http\Controllers\BilanPdfController;
@@ -10,7 +11,6 @@ use App\Http\Controllers\JokerController;
 use App\Http\Controllers\PartieController;
 use App\Http\Controllers\ProgressionController;
 use App\Http\Controllers\QuestionController;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 
@@ -173,6 +173,26 @@ Route::middleware([
 
     Route::delete('/questions/{question}', [
         AdminQuestionController::class,
+        'supprimer',
+    ]);
+
+    Route::get('/themes', [
+        ThemeController::class,
+        'afficher',
+    ]);
+
+    Route::post('/themes', [
+        ThemeController::class,
+        'creer',
+    ]);
+
+    Route::patch('/themes/{theme}', [
+        ThemeController::class,
+        'modifier',
+    ]);
+
+    Route::delete('/themes/{theme}', [
+        ThemeController::class,
         'supprimer',
     ]);
 });
