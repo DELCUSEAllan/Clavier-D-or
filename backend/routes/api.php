@@ -141,6 +141,14 @@ Route::get('/bilan/pdf', [
     'abilities:access',
 ]);
 
+Route::get('/utilisateur', [
+    AuthentificationController::class,
+    'utilisateur',
+])->middleware([
+    'auth:sanctum',
+    'abilities:access',
+]);
+
 Route::middleware([
     'auth:sanctum',
     'abilities:access',

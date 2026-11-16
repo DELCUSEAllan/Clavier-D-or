@@ -22,6 +22,13 @@ class AuthentificationController extends Controller
     private const DUREE_ACCES_MINUTES = 15;
     private const DUREE_ACTUALISATION_JOURS = 30;
 
+    public function utilisateur(Request $request): JsonResponse
+    {
+        return response()->json([
+            'utilisateur' => $request->user(),
+        ]);
+    }
+
     public function inscription(Request $request): JsonResponse
     {
         $donnees = $request->validate([
