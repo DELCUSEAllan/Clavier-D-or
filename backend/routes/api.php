@@ -23,6 +23,11 @@ Route::post('/connexion', [
     AuthentificationController::class,'connexion',])
     ->middleware('throttle:5,1');
 
+Route::post('/mot-de-passe/oublie', [
+    AuthentificationController::class,
+    'demanderReinitialisation',
+])->middleware('throttle:5,1');
+
 Route::post('/jetons/rafraichir', [
     AuthentificationController::class,
     'rafraichir',

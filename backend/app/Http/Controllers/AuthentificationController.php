@@ -6,12 +6,14 @@ use App\Models\Theme;
 use App\Models\Utilisateur;
 
 use Illuminate\Http\JsonResponse;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Password;
 
 use Laravel\Sanctum\PersonalAccessToken;
 
@@ -245,6 +247,45 @@ class AuthentificationController extends Controller
                 'expiration_actualisation' => $expirationActualisation->toIso8601String(),
             ];
         });
+    }
+
+    public function demanderReinitialisation(Request $request): JsonResponse
+    {
+        $donnees = $request->validate([
+            'email' => ['required', 'email', 'max:255'],
+        ]);
+
+        Password::sendResetLink($donnees);
+
+        return response()->json([
+            'message' => 'Si un compte correspond à cette adresse, tu recevras un lien de réinitialisation.',
+        ]);
+    }
+
+    public function reinitialiserMotDePasse(Request $request): RedirectResponse
+    {
+        $donnees = $request->validate([
+            'email' => ['required', 'email', 'max:255'],
+            'token' => ['required', 'string'],
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
+        ]);
+
+        $statut = Password::reset(
+            $donnees,
+            function (Utilisateur $utilisateur, string $password): void {
+                $utilisateur->mot_de_passe = $password;
+                $utilisateur->save();
+                $utilisateur->tokens()->delete();
+            }
+        );
+
+        if ($statut !== Password::PasswordReset) {
+            return back()->withErrors([
+                'email' => 'Lien invalide ou expiré. Demande un nouveau lien depuis l’application.',
+            ]);
+        }
+
+        return redirect()->route('password.done');
     }
 }
 
