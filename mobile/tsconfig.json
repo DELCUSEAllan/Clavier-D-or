@@ -11,6 +11,9 @@
       ]
     }
   },
+
+  "exclude": ["node_modules", "MaquetteClavierOr"],
+
   "include": [
     "**/*.ts",
     "**/*.tsx",
