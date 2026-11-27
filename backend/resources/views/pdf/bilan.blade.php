@@ -165,9 +165,12 @@
             </td>
 
             <td class="centre">
-                {{ $partie->statut === 'gagnee'
-                    ? 'Victoire'
-                    : 'Défaite' }}
+                {{ match ($partie->statut) {
+                    'gagnee' => 'Victoire',
+                    'perdue' => 'Défaite',
+                    'abandonnee' => 'Abandonnée',
+                    default => $partie->statut,
+                } }}
             </td>
         </tr>
     @empty

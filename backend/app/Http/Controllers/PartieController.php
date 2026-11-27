@@ -6,6 +6,7 @@ use App\Models\Partie;
 use App\Models\Theme;
 use App\Models\Utilisateur;
 use App\Services\SelectionQuestionsService;
+use App\Models\QuestionPosee;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -131,6 +132,7 @@ class PartieController extends Controller
                                 'question_id' =>
                                     $question->id,
                                 'ordre' => $index + 1,
+                                'contenu_fige' => QuestionPosee::figer($question),
                             ]
                         )
                         ->all()
@@ -236,6 +238,7 @@ class PartieController extends Controller
                             fn($question, int $index): array => [
                                 'question_id' => $question->id,
                                 'ordre' => $dernierOrdre + $index + 1,
+                                'contenu_fige' => QuestionPosee::figer($question),
                             ]
                         )
                         ->all()

@@ -33,7 +33,6 @@ class JokerController extends Controller
 
         $questionPosee = $partie->questionsPosees()
             ->whereNull('est_correcte')
-            ->with('question')
             ->orderBy('ordre')
             ->first();
 
@@ -74,7 +73,7 @@ class JokerController extends Controller
             return $this->utiliserJokerFront($partie, $questionPosee);
         }
 
-        $bonneReponse = trim($questionPosee->question->reponse_correcte);
+        $bonneReponse = trim($questionPosee->contenu_fige['reponse_correcte']);
 
         $premiereLettre = mb_strtoupper(
             mb_substr($bonneReponse, 0, 1)
@@ -95,16 +94,13 @@ class JokerController extends Controller
     }
 
     private function utiliserJokerFront(Partie $partie,QuestionPosee $questionPosee): JsonResponse {
-        $questionActuelle = $questionPosee->question;
+        $questionActuelle = $questionPosee->contenu_fige;
 
         $identifiantsDejaUtilises = $partie->questionsPosees()
             ->pluck('question_id');
 
-        $nouvelleQuestion = Question::where(
-            'theme_id',
-            $questionActuelle->theme_id
-        )
-            ->where('difficulte', $questionActuelle->difficulte)
+        $nouvelleQuestion = Question::where('theme_id', $questionActuelle['theme_id'])
+            ->where('difficulte', $questionActuelle['difficulte'])
             ->whereNotIn('id', $identifiantsDejaUtilises)
             ->inRandomOrder()
             ->first();
@@ -137,6 +133,7 @@ class JokerController extends Controller
             $nouvelleQuestionPosee = $partie->questionsPosees()->create([
                 'question_id' => $nouvelleQuestion->id,
                 'ordre' => $ordreActuel,
+                'contenu_fige' => QuestionPosee::figer($nouvelleQuestion),
             ]);
 
             $partie->decrement('jokers_restants');
@@ -146,11 +143,13 @@ class JokerController extends Controller
 
         $partie->refresh();
 
+        $question = $nouvelleQuestionPosee->contenu_fige;
+
         $propositions = collect([
-            $nouvelleQuestion->reponse_correcte,
-            $nouvelleQuestion->reponse_fausse_1,
-            $nouvelleQuestion->reponse_fausse_2,
-            $nouvelleQuestion->reponse_fausse_3,
+            $question['reponse_correcte'],
+            $question['reponse_fausse_1'],
+            $question['reponse_fausse_2'],
+            $question['reponse_fausse_3'],
         ])
             ->filter(fn($reponse) => $reponse !== null)
             ->shuffle()
@@ -161,9 +160,9 @@ class JokerController extends Controller
             'question' => [
                 'question_posee_id' => $nouvelleQuestionPosee->id,
                 'ordre' => $nouvelleQuestionPosee->ordre,
-                'intitule' => $nouvelleQuestion->intitule,
-                'type_question' => $nouvelleQuestion->type_question,
-                'difficulte' => $nouvelleQuestion->difficulte,
+                'intitule' => $question['intitule'],
+                'type_question' => $question['type_question'],
+                'difficulte' => $question['difficulte'],
                 'propositions' => $propositions,
             ],
             'jokers_restants' => $partie->jokers_restants,

@@ -12,7 +12,7 @@ class HistoriqueController extends Controller
     {
         $requete = $request->user()
             ->parties()
-            ->whereIn('statut', ['perdue', 'gagnee']);
+            ->whereIn('statut', ['perdue', 'gagnee', 'abandonnee']);
 
         $statistiquesParties = (clone $requete)
             ->selectRaw('COUNT(*) AS nombre_parties')

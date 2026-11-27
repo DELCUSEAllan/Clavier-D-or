@@ -18,7 +18,10 @@ class QuestionPosee extends Model
         'joker_utilise',
         'est_remplacee_par_joker',
         'rattrapage_utilise',
+        'contenu_fige'
     ];
+
+    protected $hidden = ['contenu_fige'];
 
     protected function casts(): array
     {
@@ -27,7 +30,22 @@ class QuestionPosee extends Model
             'joker_utilise' => 'boolean',
             'est_remplacee_par_joker' => 'boolean',
             'rattrapage_utilise' => 'boolean',
+            'contenu_fige' => 'array'
         ];
+    }
+
+    public static function figer(Question $question): array
+    {
+        return $question->only([
+            'theme_id',
+            'intitule',
+            'type_question',
+            'difficulte',
+            'reponse_correcte',
+            'reponse_fausse_1',
+            'reponse_fausse_2',
+            'reponse_fausse_3',
+        ]);
     }
 
     public function partie(): BelongsTo

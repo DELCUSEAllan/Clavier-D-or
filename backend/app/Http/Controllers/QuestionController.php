@@ -32,7 +32,6 @@ class QuestionController extends Controller
 
         $questionPosee = $partie->questionsPosees()
             ->whereNull('est_correcte')
-            ->with('question')
             ->orderBy('ordre')
             ->first();
 
@@ -43,27 +42,26 @@ class QuestionController extends Controller
             ]);
         }
 
-        $question = $questionPosee->question;
+        $question = $questionPosee->contenu_fige;
 
         $propositions = collect([
-            $question->reponse_correcte,
-            $question->reponse_fausse_1,
-            $question->reponse_fausse_2,
-            $question->reponse_fausse_3,
+            $question['reponse_correcte'],
+            $question['reponse_fausse_1'],
+            $question['reponse_fausse_2'],
+            $question['reponse_fausse_3'],
         ])
-            ->filter(fn($reponse) => $reponse !== null)
+            ->filter(fn ($reponse) => $reponse !== null)
             ->shuffle()
             ->values();
 
         return response()->json([
             'terminee' => false,
-
             'question' => [
                 'question_posee_id' => $questionPosee->id,
                 'ordre' => $questionPosee->ordre,
-                'intitule' => $question->intitule,
-                'type_question' => $question->type_question,
-                'difficulte' => $question->difficulte,
+                'intitule' => $question['intitule'],
+                'type_question' => $question['type_question'],
+                'difficulte' => $question['difficulte'],
                 'propositions' => $propositions,
             ],
         ]);
@@ -106,7 +104,6 @@ class QuestionController extends Controller
             $questionPosee = $partieVerrouillee
                 ->questionsPosees()
                 ->whereKey($donnees['question_posee_id'])
-                ->with('question')
                 ->lockForUpdate()
                 ->first();
 
@@ -125,10 +122,9 @@ class QuestionController extends Controller
             }
 
             $reponseDonnee = trim($donnees['reponse']);
+            $bonneReponse = $questionPosee->contenu_fige['reponse_correcte'];
 
-            $estCorrecte = $reponseDonnee === trim(
-                    $questionPosee->question->reponse_correcte
-                );
+            $estCorrecte = $reponseDonnee === trim($bonneReponse);
 
             $premiereErreurProtegee = !$estCorrecte
                 && $partieVerrouillee->role === 'back'
@@ -290,7 +286,7 @@ class QuestionController extends Controller
             return response()->json([
                 'message' => $message,
                 'est_correcte' => $estCorrecte,
-                'reponse_correcte' => $questionPosee->question->reponse_correcte,
+                'reponse_correcte' => $bonneReponse,
                 'points_gagnes' => $estCorrecte ? 1000 : 0,
                 'bonnes_reponses_niveau' => $partieVerrouillee->bonnes_reponses_niveau,
                 'erreurs_niveau' => $partieVerrouillee->erreurs_niveau,
