@@ -1,0 +1,15 @@
+{
+  "name": "Clavier d'Or — Générateur de maquettes",
+  "id": "REMPLACE_PAR_L_ID_CREE_PAR_FIGMA",
+  "api": "1.0.0",
+  "main": "code.js",
+  "editorType": [
+    "figma"
+  ],
+  "documentAccess": "dynamic-page",
+  "networkAccess": {
+    "allowedDomains": [
+      "none"
+    ]
+  }
+}
