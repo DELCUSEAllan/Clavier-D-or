@@ -6,6 +6,7 @@ import { couleurs, styles } from './ConnexionView.styles';
 
 export default function ConnexionView() {
     const [email, setEmail] = useState('');
+    const [motDePasse, setMotDePasse] = useState('');
     return (
         <SafeAreaView style={styles.ecran}>
             <Text style={styles.marque}>LE CLAVIER D’OR</Text>
@@ -23,6 +24,17 @@ export default function ConnexionView() {
                 autoCapitalize="none"
                 value={email}
                 onChangeText={setEmail}
+            />
+            <Text style={styles.libelle}>Mot de passe</Text>
+            <TextInput
+                style={styles.champ}
+                accessibilityLabel="Mot de passe"
+                placeholder="Ton mot de passe"
+                placeholderTextColor={couleurs.secondaire}
+                autoCapitalize="none"
+                secureTextEntry
+                value={motDePasse}
+                onChangeText={setMotDePasse}
             />
         </SafeAreaView>
     );
