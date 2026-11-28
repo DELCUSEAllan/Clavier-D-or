@@ -51,4 +51,7 @@ export const styles = StyleSheet.create({
         color: couleurs.texte,
         fontSize: tailles.saisie,
     },
+    actions: {
+        marginTop: 24,
+    },
 });

@@ -1,8 +1,8 @@
 import {useState} from 'react';
-import {Text, TextInput} from 'react-native';
+import {Text, TextInput, View} from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
-
 import { couleurs, styles } from './ConnexionView.styles';
+import BoutonPrincipal from '@/components/BoutonPrincipal';
 
 export default function ConnexionView() {
     const [email, setEmail] = useState('');
@@ -36,6 +36,9 @@ export default function ConnexionView() {
                 value={motDePasse}
                 onChangeText={setMotDePasse}
             />
+            <View style={styles.actions}>
+                <BoutonPrincipal libelle="Se connecter" />
+            </View>
         </SafeAreaView>
     );
 }
