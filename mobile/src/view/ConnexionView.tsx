@@ -7,6 +7,13 @@ import BoutonPrincipal from '@/components/BoutonPrincipal';
 export default function ConnexionView() {
     const [email, setEmail] = useState('');
     const [motDePasse, setMotDePasse] = useState('');
+    const [message, setMessage] = useState('');
+
+    const formulaireComplet = email.trim() !== '' && motDePasse !== '';
+
+    function gererConnexion() {
+        setMessage('Sois pas impatient ça arrive...');
+    }
     return (
         <SafeAreaView style={styles.ecran}>
             <Text style={styles.marque}>LE CLAVIER D’OR</Text>
@@ -37,7 +44,14 @@ export default function ConnexionView() {
                 onChangeText={setMotDePasse}
             />
             <View style={styles.actions}>
-                <BoutonPrincipal libelle="Se connecter" />
+                <BoutonPrincipal
+                    libelle="Se connecter"
+                    desactive={!formulaireComplet}
+                    onPress={gererConnexion}
+                />
+                {message !== '' && (
+                    <Text style={styles.sousTitre}>{message}</Text>
+                )}
             </View>
         </SafeAreaView>
     );
